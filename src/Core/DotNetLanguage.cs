@@ -27,7 +27,7 @@ namespace NClass.Core
 
     public sealed override bool SupportsDelegates => true;
 
-    public sealed override bool SupportsStates => false;
+    public sealed override bool SupportsStates => true;
 
     public override bool SupportsExplicitImplementation => true;
 
