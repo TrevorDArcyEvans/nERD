@@ -30,7 +30,7 @@ namespace NClass.GUI.Dialogs
     {
       Text = Strings.AboutNClass;
       lblTitle.Text = Program.GetVersionString();
-      lblCopyright.Text = $"Copyright (C) 2006-2009 {Strings.Author}{Environment.NewLine}Copyright (C) 2019 {Strings.Author2}";
+      lblCopyright.Text = $"Copyright (C) 2006-2009 {Strings.Author}{Environment.NewLine}Copyright (C) 2019-2020 {Strings.Author2}";
       lblStatus.Text = string.Format(Strings.BetaVersion);
       lnkEmail.Text = Strings.SendEmail;
       lnkHomepage.Text = Strings.VisitHomepage;
