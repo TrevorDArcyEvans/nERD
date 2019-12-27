@@ -1,15 +1,16 @@
 <VersionInfo>
-  <Version>3.6.0.0</Version>
-  <VersionName>3.6</VersionName>
-  <DownloadPageUrl>https://github.com/TrevorDArcyEvansBJSS/nERD/releases</DownloadPageUrl>
+  <Version>3.7.0.0</Version>
+  <VersionName>3.7</VersionName>
+  <DownloadPageUrl>https://github.com/TrevorDArcyEvans/nERD/releases</DownloadPageUrl>
   <Notes>
     * added Undo
     * added support for ERD diagramming
+	* added support for State Transition diagramming
     * added support for SQL generation
     * added force directed layout
   </Notes>
   <TranslationVersions>
-    <English>2019-08-01</English>
+    <English>2019-12-28</English>
     <Hungarian>2009-08-26</Hungarian>
     <Spanish>2009-08-26</Spanish>
     <BrazilianPortuguese>2009-07-30</BrazilianPortuguese>
