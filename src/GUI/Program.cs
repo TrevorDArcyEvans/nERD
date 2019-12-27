@@ -36,7 +36,9 @@ namespace NClass.GUI
       // Set the user interface language
       UILanguage language = UILanguage.CreateUILanguage(Settings.Default.UILanguage);
       if (language != null)
+      {
         Strings.Culture = language.Culture;
+      }
 
       // Some GUI settings
       Application.EnableVisualStyles();
@@ -61,9 +63,13 @@ namespace NClass.GUI
       }
 
       if (Settings.Default.OpenedProjects == null)
+      {
         Settings.Default.OpenedProjects = new StringCollection();
+      }
       if (Settings.Default.RecentFiles == null)
+      {
         Settings.Default.RecentFiles = new StringCollection();
+      }
     }
 
     public static string GetVersionString()
