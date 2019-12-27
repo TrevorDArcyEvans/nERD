@@ -17,6 +17,7 @@ using NClass.Core;
 using NClass.DiagramEditor;
 using NClass.Translations;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 
@@ -26,10 +27,7 @@ namespace NClass.GUI
   {
     public static void CreateGlobalErrorHandler()
     {
-#if !DEBUG
-			AppDomain.CurrentDomain.UnhandledException += 
-				new UnhandledExceptionEventHandler(AppDomain_UnhandledException);
-#endif
+      AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(AppDomain_UnhandledException);
     }
 
     private static void AppDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -47,8 +45,8 @@ namespace NClass.GUI
           Strings.ProgramTerminates, Strings.CriticalError,
           MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-        System.Diagnostics.Process.Start(crashDir);
-        System.Diagnostics.Process.GetCurrentProcess().Kill();
+        Process.Start(crashDir);
+        Process.GetCurrentProcess().Kill();
         // Goodbye!
       }
     }
@@ -88,13 +86,13 @@ namespace NClass.GUI
         string filePath = Path.Combine(directory, "crash.log");
         writer = new StreamWriter(filePath);
 
-        writer.WriteLine(string.Format(
-          Strings.SendLogFile, Properties.Resources.MailAddress));
+        writer.WriteLine(string.Format(Strings.SendLogFile, Properties.Resources.MailAddress));
         writer.WriteLine();
         writer.WriteLine("Version: {0}", Program.GetVersionString());
         writer.WriteLine("Mono: {0}", MonoHelper.IsRunningOnMono ? "yes" : "no");
         if (MonoHelper.IsRunningOnMono)
-          writer.WriteLine("Mono version: {0}", MonoHelper.Version);
+        { 
+          writer.WriteLine("Mono version: {0}", MonoHelper.Version); }
         writer.WriteLine("OS: {0}", Environment.OSVersion.VersionString);
 
         writer.WriteLine();
