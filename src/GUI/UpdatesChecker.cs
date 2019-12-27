@@ -26,7 +26,7 @@ namespace NClass.GUI
 {
   public static class UpdatesChecker
   {
-    private const string VersionUrl = "https://raw.githubusercontent.com/TrevorDArcyEvansBJSS/nERD/master/version.xml";
+    private const string VersionUrl = "https://raw.githubusercontent.com/TrevorDArcyEvans/nERD/master/version.xml";
 
     private class VersionInfo
     {
