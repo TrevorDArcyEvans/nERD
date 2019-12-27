@@ -137,6 +137,11 @@ namespace NClass.GUI.ModelExplorer
         return "erd";
       }
 
+      if (language is StateTransitionDiagram.StdLanguage)
+      {
+        return "std";
+      }
+
       return "diagram";
     }
   }

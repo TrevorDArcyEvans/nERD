@@ -831,7 +831,7 @@
     <value>&amp;Structure</value>
   </data>
   <data name="TranslationVersion" xml:space="preserve">
-    <value>2019-08-05</value>
+    <value>2019-12-28</value>
     <comment>#It's needed for version controlling, don't translate it</comment>
   </data>
   <data name="TranslationUpdated" xml:space="preserve">
@@ -1208,5 +1208,8 @@ Do you still want to continue?</value>
   </data>
   <data name="SqlGenError_UnsupportedType" xml:space="preserve">
     <value>unsupported .NET types</value>
+  </data>
+  <data name="MenuStdDiagram" xml:space="preserve">
+    <value>State Transition Diagram</value>
   </data>
 </root>

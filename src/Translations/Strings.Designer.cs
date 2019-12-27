@@ -2350,6 +2350,15 @@ namespace NClass.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to State Transition Diagram.
+        /// </summary>
+        public static string MenuStdDiagram {
+            get {
+                return ResourceManager.GetString("MenuStdDiagram", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;Structure.
         /// </summary>
         public static string MenuStruct {
@@ -3001,7 +3010,7 @@ namespace NClass.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2019-08-05.
+        ///   Looks up a localized string similar to 2019-12-28.
         /// </summary>
         public static string TranslationVersion {
             get {

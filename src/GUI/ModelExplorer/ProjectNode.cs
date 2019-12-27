@@ -19,6 +19,7 @@ using NClass.DiagramEditor;
 using NClass.DiagramEditor.ClassDiagram;
 using NClass.EntityRelationshipDiagram;
 using NClass.GUI.Properties;
+using NClass.StateTransitionDiagram;
 using NClass.Translations;
 using System;
 using System.Windows.Forms;
@@ -34,7 +35,8 @@ namespace NClass.GUI.ModelExplorer
       _contextMenu.Items.AddRange(new ToolStripItem[] {
         new ToolStripMenuItem(Strings.MenuAddNew, Resources.NewDocument,
           new ToolStripMenuItem(Strings.MenuCSharpDiagram, null, newCSharpDiagram_Click),
-          new ToolStripMenuItem(Strings.MenuErdDiagram, null, newErdDiagram_Click)
+          new ToolStripMenuItem(Strings.MenuErdDiagram, null, newErdDiagram_Click),
+          new ToolStripMenuItem(Strings.MenuStdDiagram, null, newStdDiagram_Click)
         ),
         new ToolStripSeparator(),
         new ToolStripMenuItem(Strings.MenuSave, Resources.Save, save_Click),
@@ -185,6 +187,16 @@ namespace NClass.GUI.ModelExplorer
 
       Diagram diagram = new Diagram(ErdLanguage.Instance);
       Settings.Default.DefaultLanguageName = ErdLanguage.Instance.AssemblyName;
+      project.Add(diagram);
+    }
+
+    private static void newStdDiagram_Click(object sender, EventArgs e)
+    {
+      ToolStripItem menuItem = (ToolStripItem)sender;
+      Project project = ((ProjectNode)menuItem.OwnerItem.Owner.Tag).Project;
+
+      Diagram diagram = new Diagram(StdLanguage.Instance);
+      Settings.Default.DefaultLanguageName = StdLanguage.Instance.AssemblyName;
       project.Add(diagram);
     }
 

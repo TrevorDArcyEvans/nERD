@@ -73,14 +73,14 @@ namespace NClass.GUI.ModelExplorer
             this.mnuSaveAll,
             this.mnuCloseAll});
       this.contextMenu.Name = "contextMenu";
-      this.contextMenu.Size = new System.Drawing.Size(228, 138);
+      this.contextMenu.Size = new System.Drawing.Size(174, 130);
       this.contextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenu_Opening);
       // 
       // mnuNewProject
       // 
       this.mnuNewProject.Image = global::NClass.GUI.Properties.Resources.Project;
       this.mnuNewProject.Name = "mnuNewProject";
-      this.mnuNewProject.Size = new System.Drawing.Size(227, 32);
+      this.mnuNewProject.Size = new System.Drawing.Size(173, 30);
       this.mnuNewProject.Text = "&New Project";
       this.mnuNewProject.Click += new System.EventHandler(this.mnuNewProject_Click);
       // 
@@ -96,7 +96,7 @@ namespace NClass.GUI.ModelExplorer
             this.mnuRecentFile5});
       this.mnuOpen.Image = global::NClass.GUI.Properties.Resources.Open;
       this.mnuOpen.Name = "mnuOpen";
-      this.mnuOpen.Size = new System.Drawing.Size(227, 32);
+      this.mnuOpen.Size = new System.Drawing.Size(173, 30);
       this.mnuOpen.Text = "&Open";
       this.mnuOpen.DropDownOpening += new System.EventHandler(this.mnuOpen_DropDownOpening);
       // 
@@ -104,19 +104,19 @@ namespace NClass.GUI.ModelExplorer
       // 
       this.mnuOpenFile.Name = "mnuOpenFile";
       this.mnuOpenFile.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-      this.mnuOpenFile.Size = new System.Drawing.Size(257, 34);
+      this.mnuOpenFile.Size = new System.Drawing.Size(171, 22);
       this.mnuOpenFile.Text = "&New File...";
       this.mnuOpenFile.Click += new System.EventHandler(this.mnuOpenFile_Click);
       // 
       // mnuSepOpenFile
       // 
       this.mnuSepOpenFile.Name = "mnuSepOpenFile";
-      this.mnuSepOpenFile.Size = new System.Drawing.Size(254, 6);
+      this.mnuSepOpenFile.Size = new System.Drawing.Size(168, 6);
       // 
       // mnuRecentFile1
       // 
       this.mnuRecentFile1.Name = "mnuRecentFile1";
-      this.mnuRecentFile1.Size = new System.Drawing.Size(257, 34);
+      this.mnuRecentFile1.Size = new System.Drawing.Size(171, 22);
       this.mnuRecentFile1.Tag = 0;
       this.mnuRecentFile1.Text = "Recent File 1";
       this.mnuRecentFile1.Click += new System.EventHandler(this.OpenRecentFile_Click);
@@ -124,7 +124,7 @@ namespace NClass.GUI.ModelExplorer
       // mnuRecentFile2
       // 
       this.mnuRecentFile2.Name = "mnuRecentFile2";
-      this.mnuRecentFile2.Size = new System.Drawing.Size(257, 34);
+      this.mnuRecentFile2.Size = new System.Drawing.Size(171, 22);
       this.mnuRecentFile2.Tag = 1;
       this.mnuRecentFile2.Text = "Recent File 2";
       this.mnuRecentFile2.Click += new System.EventHandler(this.OpenRecentFile_Click);
@@ -132,7 +132,7 @@ namespace NClass.GUI.ModelExplorer
       // mnuRecentFile3
       // 
       this.mnuRecentFile3.Name = "mnuRecentFile3";
-      this.mnuRecentFile3.Size = new System.Drawing.Size(257, 34);
+      this.mnuRecentFile3.Size = new System.Drawing.Size(171, 22);
       this.mnuRecentFile3.Tag = 2;
       this.mnuRecentFile3.Text = "Recent File 3";
       this.mnuRecentFile3.Click += new System.EventHandler(this.OpenRecentFile_Click);
@@ -140,7 +140,7 @@ namespace NClass.GUI.ModelExplorer
       // mnuRecentFile4
       // 
       this.mnuRecentFile4.Name = "mnuRecentFile4";
-      this.mnuRecentFile4.Size = new System.Drawing.Size(257, 34);
+      this.mnuRecentFile4.Size = new System.Drawing.Size(171, 22);
       this.mnuRecentFile4.Tag = 3;
       this.mnuRecentFile4.Text = "Recent File 4";
       this.mnuRecentFile4.Click += new System.EventHandler(this.OpenRecentFile_Click);
@@ -148,7 +148,7 @@ namespace NClass.GUI.ModelExplorer
       // mnuRecentFile5
       // 
       this.mnuRecentFile5.Name = "mnuRecentFile5";
-      this.mnuRecentFile5.Size = new System.Drawing.Size(257, 34);
+      this.mnuRecentFile5.Size = new System.Drawing.Size(171, 22);
       this.mnuRecentFile5.Tag = 4;
       this.mnuRecentFile5.Text = "Recent File 5";
       this.mnuRecentFile5.Click += new System.EventHandler(this.OpenRecentFile_Click);
@@ -156,20 +156,20 @@ namespace NClass.GUI.ModelExplorer
       // mnuSepOpen
       // 
       this.mnuSepOpen.Name = "mnuSepOpen";
-      this.mnuSepOpen.Size = new System.Drawing.Size(224, 6);
+      this.mnuSepOpen.Size = new System.Drawing.Size(170, 6);
       // 
       // mnuSaveAll
       // 
       this.mnuSaveAll.Image = global::NClass.GUI.Properties.Resources.SaveAll;
       this.mnuSaveAll.Name = "mnuSaveAll";
-      this.mnuSaveAll.Size = new System.Drawing.Size(227, 32);
+      this.mnuSaveAll.Size = new System.Drawing.Size(173, 30);
       this.mnuSaveAll.Text = "Save A&ll Projects";
       this.mnuSaveAll.Click += new System.EventHandler(this.mnuSaveAll_Click);
       // 
       // mnuCloseAll
       // 
       this.mnuCloseAll.Name = "mnuCloseAll";
-      this.mnuCloseAll.Size = new System.Drawing.Size(227, 32);
+      this.mnuCloseAll.Size = new System.Drawing.Size(173, 30);
       this.mnuCloseAll.Text = "Close All Projects";
       this.mnuCloseAll.Click += new System.EventHandler(this.mnuCloseAll_Click);
       // 
@@ -180,6 +180,7 @@ namespace NClass.GUI.ModelExplorer
       this.imageList.Images.SetKeyName(0, "project");
       this.imageList.Images.SetKeyName(1, "diagram");
       this.imageList.Images.SetKeyName(2, "erd");
+      this.imageList.Images.SetKeyName(3, "std");
       // 
       // lblAddProject
       // 

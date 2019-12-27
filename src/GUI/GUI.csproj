@@ -192,6 +192,10 @@
       <Project>{722F4F78-E7CA-41C5-908A-707C0226486B}</Project>
       <Name>EntityRelationshipDiagram</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StateTransitionDiagram\StateTransitionDiagram.csproj">
+      <Project>{484172f2-cef2-42f2-b397-1ec73db90bbe}</Project>
+      <Name>StateTransitionDiagram</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Translations\Translations.csproj">
       <Project>{B3B7D798-3D52-47F0-B1A7-A91BC5FE184F}</Project>
       <Name>Translations</Name>

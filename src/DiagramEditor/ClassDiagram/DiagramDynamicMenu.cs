@@ -66,18 +66,17 @@ namespace NClass.DiagramEditor.ClassDiagram
         mnuNewStructure.Visible = toolNewStructure.Visible = _diagram.Language.SupportsStructures;
         mnuNewDelegate.Visible = toolNewDelegate.Visible = _diagram.Language.SupportsDelegates;
         mnuNewEnum.Visible = toolNewEnum.Visible = _diagram.Language.SupportsEnums;
-        mnuNewState.Visible = toolNewState.Visible = _diagram.Language.SupportsStates;
+        mnuNewState.Visible = toolNewState.Visible =
+        mnuNewTransitionRelationship.Visible = toolNewTransitionRelationship.Visible = _diagram.Language.SupportsStates;
 
-        var isERDdiagram = _diagram.Language is EntityRelationshipDiagram.ErdLanguage;
         mnuNewAssociation.Visible = toolNewAssociation.Visible =
         mnuNewComposition.Visible = toolNewComposition.Visible =
         mnuNewAggregation.Visible = toolNewAggregation.Visible =
         mnuNewGeneralization.Visible = toolNewGeneralization.Visible =
         mnuNewRealization.Visible = toolNewRealization.Visible =
         mnuNewDependency.Visible = toolNewDependency.Visible =
-        mnuNewNesting.Visible = toolNewNesting.Visible =
-        mnuNewTransitionRelationship.Visible = toolNewTransitionRelationship.Visible = !isERDdiagram;
-        mnuNewEntityRelationship.Visible = toolNewEntityRelationship.Visible = isERDdiagram;
+        mnuNewNesting.Visible = toolNewNesting.Visible = _diagram.Language is CSharp.CSharpLanguage;
+        mnuNewEntityRelationship.Visible = toolNewEntityRelationship.Visible = _diagram.Language is EntityRelationshipDiagram.ErdLanguage;
 
         toolDelete.Enabled = _diagram.HasSelectedElement;
       }

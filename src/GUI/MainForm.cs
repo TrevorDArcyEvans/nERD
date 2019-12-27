@@ -19,6 +19,7 @@ using NClass.DiagramEditor;
 using NClass.DiagramEditor.ClassDiagram;
 using NClass.EntityRelationshipDiagram;
 using NClass.GUI.Dialogs;
+using NClass.StateTransitionDiagram;
 using NClass.Translations;
 using System;
 using System.Collections.Generic;
@@ -239,6 +240,7 @@ namespace NClass.GUI
       mnuNewProject.Text = Strings.MenuProject;
       mnuNewCSharpDiagram.Text = Strings.MenuCSharpDiagram;
       mnuNewErdDiagram.Text = Strings.MenuErdDiagram;
+      mnuNewStdDiagram.Text = Strings.MenuStdDiagram;
       mnuOpen.Text = Strings.MenuOpen;
       mnuOpenFile.Text = Strings.MenuOpenFile;
       mnuSave.Text = Strings.MenuSave;
@@ -280,6 +282,7 @@ namespace NClass.GUI
       // Toolbar
       toolNewCSharpDiagram.Text = Strings.MenuCSharpDiagram;
       toolNewErdDiagram.Text = Strings.MenuErdDiagram;
+      toolNewStdDiagram.Text = Strings.MenuStdDiagram;
       toolSave.Text = Strings.Save;
       toolPrint.Text = Strings.Print;
       toolCut.Text = Strings.Cut;
@@ -568,6 +571,17 @@ namespace NClass.GUI
         Diagram diagram = new Diagram(ErdLanguage.Instance);
         Workspace.Default.ActiveProject.Add(diagram);
         Settings.Default.DefaultLanguageName = ErdLanguage.Instance.AssemblyName;
+      }
+    }
+
+    private void mnuNewStdDiagram_Click(object sender, EventArgs e)
+    {
+      if (Workspace.Default.HasActiveProject)
+      {
+        ShowModelExplorer = true;
+        Diagram diagram = new Diagram(StdLanguage.Instance);
+        Workspace.Default.ActiveProject.Add(diagram);
+        Settings.Default.DefaultLanguageName = StdLanguage.Instance.AssemblyName;
       }
     }
 
