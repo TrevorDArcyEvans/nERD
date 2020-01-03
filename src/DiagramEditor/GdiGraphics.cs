@@ -168,7 +168,7 @@ namespace NClass.DiagramEditor
 
     public void ScaleTransform(float sx, float sy)
     {
-      _graphics.TranslateTransform(sx, sy);
+      _graphics.ScaleTransform(sx, sy);
     }
 
     public void TranslateTransform(float dx, float dy)
