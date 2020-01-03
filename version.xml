@@ -5,12 +5,12 @@
   <Notes>
     * added Undo
     * added support for ERD diagramming
-	* added support for State Transition diagramming
+    * added support for State Transition diagramming
     * added support for SQL generation
     * added force directed layout
   </Notes>
   <TranslationVersions>
-    <English>2019-12-28</English>
+    <English>2020-01-03</English>
     <Hungarian>2009-08-26</Hungarian>
     <Spanish>2009-08-26</Spanish>
     <BrazilianPortuguese>2009-07-30</BrazilianPortuguese>
