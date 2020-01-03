@@ -65,18 +65,8 @@ namespace NClass.DiagramEditor.ClassDiagram.Editors
     {
       if (NeedValidation)
       {
-        var oldName = Shape.Entity.Name;
-        try
-        {
-          Shape.State.Name = txtName.Text;
-          RefreshValues();
-        }
-        catch (DuplicateTypeException ex)
-        {
-          Shape.State.Name = oldName;
-          MessageBox.Show(ex.Message, Strings.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
-          return false;
-        }
+        Shape.State.Name = txtName.Text;
+        RefreshValues();
       }
       return true;
     }

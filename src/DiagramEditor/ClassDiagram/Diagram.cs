@@ -984,10 +984,6 @@ namespace NClass.DiagramEditor.ClassDiagram
         if (shape is TypeShape)
           shape.ShowEditor();
       }
-      catch (DuplicateTypeException ex)
-      {
-        MessageBox.Show(ex.Message, Strings.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
-      }
       finally
       {
         _state = Mode.Normal;
@@ -1219,10 +1215,6 @@ namespace NClass.DiagramEditor.ClassDiagram
               break;
           }
         }
-      }
-      catch (DuplicateTypeException ex)
-      {
-        MessageBox.Show(ex.Message, Strings.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
       finally
       {

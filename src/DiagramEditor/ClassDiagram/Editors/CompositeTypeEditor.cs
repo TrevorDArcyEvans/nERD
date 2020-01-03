@@ -312,7 +312,6 @@ namespace NClass.DiagramEditor.ClassDiagram.Editors
     {
       if (NeedValidation)
       {
-        var oldName = Shape.CompositeType.Name;
         try
         {
           Shape.CompositeType.Name = txtName.Text;
@@ -323,12 +322,6 @@ namespace NClass.DiagramEditor.ClassDiagram.Editors
           SetError(ex.Message);
           return false;
         }
-        catch (DuplicateTypeException ex)
-        {
-          Shape.CompositeType.Name = oldName;
-          SetError(ex.Message);
-          return false;
-        }
       }
       return true;
     }
@@ -336,7 +329,9 @@ namespace NClass.DiagramEditor.ClassDiagram.Editors
     private void SetError(string message)
     {
       if (MonoHelper.IsRunningOnMono && MonoHelper.IsOlderVersionThan("2.4"))
+      {
         return;
+      }
 
       errorProvider.SetError(this, message);
     }

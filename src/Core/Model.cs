@@ -128,7 +128,7 @@ namespace NClass.Core
 
     private void ElementChanged(object sender, EventArgs e)
     {
-      CheckForDuplicateEntityName(sender);
+      ResolveDuplicateEntityName(sender);
 
       OnModified(e);
     }
@@ -136,7 +136,7 @@ namespace NClass.Core
     #region Entity
     private void AddEntity(IEntity entity)
     {
-      CheckForDuplicateEntityName(entity);
+      ResolveDuplicateEntityName(entity);
 
       OnBeginUndoableOperation(this, EventArgs.Empty);
       _entities.Add(entity);
@@ -145,7 +145,7 @@ namespace NClass.Core
       OnEntityAdded(new EntityEventArgs(entity));
     }
 
-    private void CheckForDuplicateEntityName(object obj)
+    private void ResolveDuplicateEntityName(object obj)
     {
       var entity = obj as TypeBase;
 
@@ -156,7 +156,8 @@ namespace NClass.Core
           .Except(new[] { entity })
           .Any(x => x.Name == entity?.Name))
       {
-        throw new DuplicateTypeException(entity.Name);
+        entity.Name += "1";
+        ResolveDuplicateEntityName(entity);
       }
     }
     #endregion
