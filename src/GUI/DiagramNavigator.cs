@@ -113,7 +113,7 @@ namespace NClass.GUI
       return Math.Min(zoom1, zoom2);
     }
 
-    private void DrawDocument(Graphics g)
+    private void DrawDocument(IGraphics g)
     {
       if (DocumentVisualizer != null && DocumentVisualizer.HasDocument)
       {
@@ -123,7 +123,7 @@ namespace NClass.GUI
         float zoom = GetZoom();
         g.ScaleTransform(zoom, zoom);
 
-        DocumentVisualizer.DrawDocument(new GdiGraphics(g));
+        DocumentVisualizer.DrawDocument(g);
 
         g.ResetTransform();
 
@@ -150,7 +150,7 @@ namespace NClass.GUI
       }
     }
 
-    private void DrawFrame(Graphics g, Rectangle frame)
+    private void DrawFrame(IGraphics g, Rectangle frame)
     {
       FrameColor = Color.FromArgb(80, 100, 150);
       using (Pen pen = new Pen(FrameColor))
@@ -167,7 +167,7 @@ namespace NClass.GUI
     protected override void OnPaint(PaintEventArgs e)
     {
       base.OnPaint(e);
-      DrawDocument(e.Graphics);
+      DrawDocument(new GdiGraphics(e.Graphics));
     }
   }
 }
