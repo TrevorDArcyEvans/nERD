@@ -108,9 +108,13 @@ namespace NClass.DiagramEditor
       get
       {
         if (HasDocument)
+        {
           return Document.BackColor;
+        }
         else
+        {
           return base.BackColor;
+        }
       }
       set
       {
@@ -137,9 +141,13 @@ namespace NClass.DiagramEditor
       get
       {
         if (HasDocument)
+        {
           return Document.Size;
+        }
         else
+        {
           return Size.Empty;
+        }
       }
     }
 
@@ -170,9 +178,13 @@ namespace NClass.DiagramEditor
       get
       {
         if (HasDocument)
+        {
           return Document.Zoom;
+        }
         else
+        {
           return 1.0F;
+        }
       }
       set
       {
@@ -186,9 +198,13 @@ namespace NClass.DiagramEditor
       get
       {
         if (HasDocument)
+        {
           return (int)Math.Round(Document.Zoom * 100);
+        }
         else
+        {
           return 100;
+        }
       }
     }
 
@@ -224,6 +240,7 @@ namespace NClass.DiagramEditor
       if (!_windows.Contains(window))
       {
         _windows.Add(window);
+
         if (ParentForm != null)
         {
           ParentForm.Controls.Add(window);
@@ -281,9 +298,13 @@ namespace NClass.DiagramEditor
       if (HasDocument)
       {
         if (Document.HasSelectedElement)
+        {
           ChangeZoom(enlarge, Document.GetPrintingArea(true));
+        }
         else
+        {
           ChangeZoom(enlarge, GetAbsoluteCenterPoint());
+        }
       }
     }
 
@@ -308,9 +329,13 @@ namespace NClass.DiagramEditor
     private float CalculateZoomValue(bool enlarge)
     {
       if (enlarge)
+      {
         return ((int)Math.Round(Document.Zoom * 100) + 10) / 10 / 10F;
+      }
       else
+      {
         return ((int)Math.Round(Document.Zoom * 100) - 1) / 10 / 10F;
+      }
     }
 
     public void ChangeZoom(float zoom)
@@ -318,9 +343,13 @@ namespace NClass.DiagramEditor
       if (HasDocument)
       {
         if (Document.HasSelectedElement)
+        {
           ChangeZoom(zoom, Document.GetPrintingArea(true));
+        }
         else
+        {
           ChangeZoom(zoom, GetAbsoluteCenterPoint());
+        }
       }
     }
 
@@ -413,7 +442,9 @@ namespace NClass.DiagramEditor
       {
         Point point = base.ScrollToControl(activeControl);
         if (HasDocument)
+        {
           Document.Offset = new Point(-point.X, -point.Y);
+        }
         return point;
       }
     }
@@ -436,9 +467,13 @@ namespace NClass.DiagramEditor
         if (Document.Zoom == 1.0F)
         {
           if (DiagramEditor.Settings.Default.UseClearType == ClearTypeMode.Always)
+          {
             g.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
+          }
           else
+          {
             g.TextRenderingHint = TextRenderingHint.SingleBitPerPixelGridFit;
+          }
         }
         else
         {
@@ -470,9 +505,13 @@ namespace NClass.DiagramEditor
         int maxX = DisplayRectangle.Width - ClientRectangle.Width;
 
         if (posX < 0)
+        {
           posX = 0;
+        }
         if (posX > maxX)
+        {
           posX = maxX;
+        }
 
         SetDisplayRectLocation(-posX, DisplayRectangle.Y);
         AdjustFormScrollbars(true);
@@ -485,7 +524,9 @@ namespace NClass.DiagramEditor
       {
         Document.Offset = Offset;
         if (MonoHelper.IsRunningOnMono)
+        {
           Invalidate();
+        }
       }
     }
 
@@ -508,9 +549,13 @@ namespace NClass.DiagramEditor
       Keys key = (keyData & ~Keys.Modifiers);
 
       if (key == Keys.Up || key == Keys.Down)
+      {
         return false;
+      }
       else
+      {
         return base.ProcessDialogKey(keyData);
+      }
     }
 
     protected override void OnClientSizeChanged(EventArgs e)
@@ -532,9 +577,13 @@ namespace NClass.DiagramEditor
         bool enlarge = (e.Delta > 0);
 
         if (ClientRectangle.Contains(e.Location))
+        {
           ChangeZoom(enlarge, ConvertRelativeToAbsolute(e.Location));
+        }
         else
+        {
           ChangeZoom(enlarge);
+        }
       }
       else if (ModifierKeys == Keys.Shift)
       {
