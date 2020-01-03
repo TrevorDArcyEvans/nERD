@@ -69,9 +69,13 @@ namespace NClass.GUI
         if (!_showModelExplorer)
         {
           if (_showNavigator)
+          {
             toolsPanel.Panel1Collapsed = true;
+          }
           else
+          {
             windowClient.Panel2Collapsed = true;
+          }
           _showModelExplorer = false;
         }
         else
@@ -79,7 +83,9 @@ namespace NClass.GUI
           toolsPanel.Panel1Collapsed = false;
           windowClient.Panel2Collapsed = false;
           if (!_showNavigator)
+          {
             toolsPanel.Panel2Collapsed = true;
+          }
         }
       }
     }
@@ -98,9 +104,13 @@ namespace NClass.GUI
         if (!_showNavigator)
         {
           if (_showModelExplorer)
+          {
             toolsPanel.Panel2Collapsed = true;
+          }
           else
+          {
             windowClient.Panel2Collapsed = true;
+          }
           _showNavigator = false;
         }
         else
@@ -108,7 +118,9 @@ namespace NClass.GUI
           toolsPanel.Panel2Collapsed = false;
           windowClient.Panel2Collapsed = false;
           if (!_showModelExplorer)
+          {
             toolsPanel.Panel1Collapsed = true;
+          }
         }
       }
     }
@@ -125,7 +137,9 @@ namespace NClass.GUI
       {
         string pluginsPath = Path.Combine(Application.StartupPath, "Plugins");
         if (!Directory.Exists(pluginsPath))
+        {
           return;
+        }
 
         DirectoryInfo directory = new DirectoryInfo(pluginsPath);
 
@@ -181,12 +195,16 @@ namespace NClass.GUI
     {
       // Mono hack because of a .NET/Mono serialization difference of Point and Size classes
       if (MonoHelper.IsRunningOnMono)
+      {
         return;
+      }
 
       Location = WindowSettings.Default.WindowPosition;
       Size = WindowSettings.Default.WindowSize;
       if (WindowSettings.Default.IsWindowMaximized)
+      {
         WindowState = FormWindowState.Maximized;
+      }
 
       ShowModelExplorer = WindowSettings.Default.ShowModelExplorer;
       ShowNavigator = WindowSettings.Default.ShowNavigator;
@@ -198,7 +216,9 @@ namespace NClass.GUI
     {
       // Mono hack because of a .NET/Mono serialization difference of Point and Size classes
       if (MonoHelper.IsRunningOnMono)
+      {
         return;
+      }
 
       if (WindowState == FormWindowState.Maximized)
       {
@@ -208,9 +228,13 @@ namespace NClass.GUI
       {
         WindowSettings.Default.IsWindowMaximized = false;
         if (WindowState == FormWindowState.Normal)
+        {
           WindowSettings.Default.WindowSize = Size;
+        }
         if (WindowState == FormWindowState.Normal)
+        {
           WindowSettings.Default.WindowPosition = Location;
+        }
       }
       WindowSettings.Default.ClientSplitterDistance = windowClient.SplitterDistance;
       WindowSettings.Default.ToolsSplitterDistance = toolsPanel.SplitterDistance;
@@ -300,9 +324,13 @@ namespace NClass.GUI
         string projectName = Workspace.Default.ActiveProject.Name;
 
         if (Workspace.Default.ActiveProject.IsDirty)
+        {
           Text = projectName + "* - nERD";
+        }
         else
+        {
           Text = projectName + " - nERD";
+        }
       }
       else
       {
@@ -315,7 +343,9 @@ namespace NClass.GUI
       DynamicMenu newMenu = null;
 
       if (_docManager.HasDocument)
+      {
         newMenu = _docManager.ActiveDocument.GetDynamicMenu();
+      }
 
       if (newMenu != _dynamicMenu)
       {
@@ -326,7 +356,7 @@ namespace NClass.GUI
             MainMenuStrip.Items.Remove(menuItem);
           }
           ToolStrip toolStrip = _dynamicMenu.GetToolStrip();
-            toolStripContainer?.TopToolStripPanel.Controls.Remove(toolStrip);
+          toolStripContainer?.TopToolStripPanel.Controls.Remove(toolStrip);
           _dynamicMenu.SetReference(null);
         }
 
@@ -334,7 +364,9 @@ namespace NClass.GUI
         {
           int preferredIndex = newMenu.PreferredIndex;
           if (preferredIndex < 0)
+          {
             preferredIndex = 3;
+          }
 
           foreach (ToolStripMenuItem menuItem in newMenu)
           {
@@ -402,9 +434,13 @@ namespace NClass.GUI
     private void MainForm_DragEnter(object sender, DragEventArgs e)
     {
       if (e.Data.GetDataPresent(DataFormats.FileDrop))
+      {
         e.Effect = DragDropEffects.Copy;
+      }
       else
+      {
         e.Effect = DragDropEffects.None;
+      }
     }
 
     private void MainForm_DragDrop(object sender, DragEventArgs e)
@@ -422,13 +458,17 @@ namespace NClass.GUI
     private void MainForm_KeyDown(object sender, KeyEventArgs e)
     {
       if (e.Control && e.KeyCode == Keys.Tab)
+      {
         _docManager.SwitchDocument();
+      }
     }
 
     private void MainForm_KeyUp(object sender, KeyEventArgs e)
     {
       if (_docManager.SwitchingTabs && !e.Control)
+      {
         _docManager.EndSwitching();
+      }
     }
 
     private void OpenRecentFile_Click(object sender, EventArgs e)
@@ -819,7 +859,9 @@ namespace NClass.GUI
         dialog.StyleModified += new EventHandler(dialog_StyleChanged);
         dialog.ShowDialog();
         if (_docManager.HasDocument)
+        {
           _docManager.ActiveDocument.Redraw();
+        }
       }
     }
 
@@ -859,7 +901,9 @@ namespace NClass.GUI
     private void mnuAbout_Click(object sender, EventArgs e)
     {
       using (AboutDialog dialog = new AboutDialog())
+      {
         dialog.ShowDialog();
+      }
     }
 
     #endregion
