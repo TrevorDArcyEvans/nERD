@@ -16,6 +16,7 @@
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Text;
 
 namespace NClass.DiagramEditor
 {
@@ -174,6 +175,49 @@ namespace NClass.DiagramEditor
     public void TranslateTransform(float dx, float dy)
     {
       _graphics.TranslateTransform(dx, dy);
+    }
+
+    public GraphicsState Save()
+    {
+      return _graphics.Save();
+    }
+
+    public void Restore(GraphicsState state)
+    {
+      _graphics.Restore(state);
+    }
+
+    public SmoothingMode SmoothingMode
+    {
+      get
+      {
+        return _graphics.SmoothingMode;
+      }
+      set
+      {
+        _graphics.SmoothingMode = value;
+      }
+    }
+
+    public TextRenderingHint TextRenderingHint
+    {
+      get
+      {
+        return _graphics.TextRenderingHint;
+      }
+      set
+      {
+        _graphics.TextRenderingHint = value;
+      }
+    }
+
+    public float DpiX => _graphics.DpiX;
+
+    public float DpiY => _graphics.DpiY;
+
+    public SizeF MeasureString(string text, Font font, PointF origin, StringFormat stringFormat)
+    {
+      return _graphics.MeasureString(text, font, origin, stringFormat);
     }
   }
 }

@@ -40,7 +40,7 @@ namespace NClass.DiagramEditor
 
     bool HasSelectedElement { get; }
 
-    void Display(Graphics g);
+    void Display(IGraphics g);
 
     void Redraw();
 

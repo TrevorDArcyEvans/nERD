@@ -416,24 +416,22 @@ namespace NClass.DiagramEditor.ClassDiagram
       }
     }
 
-    public void Display(Graphics g)
+    public void Display(IGraphics g)
     {
       RectangleF clip = g.ClipBounds;
 
       // Draw diagram elements
-      IGraphics graphics = new GdiGraphics(g);
       foreach (DiagramElement element in GetElementsInReversedDisplayOrder())
       {
         if (clip.IntersectsWith(element.GetVisibleArea(Zoom)))
         {
-          element.Draw(graphics, true);
+          element.Draw(g, true);
         }
         element.NeedsRedraw = false;
       }
       if (_state == Mode.CreatingShape)
       {
-        g.DrawRectangle(SelectionPen,
-          _shapeOutline.X, _shapeOutline.Y, _shapeOutline.Width, _shapeOutline.Height);
+        g.DrawRectangle(SelectionPen, new Rectangle(_shapeOutline.X, _shapeOutline.Y, _shapeOutline.Width, _shapeOutline.Height));
       }
       else if (_state == Mode.CreatingConnection)
       {
@@ -466,11 +464,11 @@ namespace NClass.DiagramEditor.ClassDiagram
           Math.Min(_selectionFrame.Top, _selectionFrame.Bottom),
           Math.Max(_selectionFrame.Left, _selectionFrame.Right),
           Math.Max(_selectionFrame.Top, _selectionFrame.Bottom));
-        g.DrawRectangle(SelectionPen,
-          frame.X * Zoom - Offset.X,
-          frame.Y * Zoom - Offset.Y,
-          frame.Width * Zoom,
-          frame.Height * Zoom);
+        g.DrawRectangle(SelectionPen, new Rectangle(
+          (int)(frame.X * Zoom - Offset.X),
+          (int)(frame.Y * Zoom - Offset.Y),
+          (int)(frame.Width * Zoom),
+          (int)(frame.Height * Zoom)));
       }
 
       // Draw diagram border
@@ -480,10 +478,10 @@ namespace NClass.DiagramEditor.ClassDiagram
       if (clip.Right > borderWidth || clip.Bottom > borderHeight)
       {
         SelectionPen.DashOffset = Offset.Y - Offset.X;
-        g.DrawLines(SelectionPen, new PointF[] {
-          new PointF(borderWidth, 0),
-          new PointF(borderWidth, borderHeight),
-          new PointF(0, borderHeight)
+        g.DrawLines(SelectionPen, new Point[] {
+          new Point((int)borderWidth, 0),
+          new Point((int)borderWidth, (int)borderHeight),
+          new Point(0, (int)borderHeight)
         });
         SelectionPen.DashOffset = 0;
       }

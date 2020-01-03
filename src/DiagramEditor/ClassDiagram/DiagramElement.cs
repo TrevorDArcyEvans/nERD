@@ -27,7 +27,7 @@ namespace NClass.DiagramEditor.ClassDiagram
   {
     protected const float UndreadableZoom = 0.25F;
 
-    internal static Graphics Graphics = null; // Graphics object for text measuring
+    internal static IGraphics Graphics = null; // Graphics object for text measuring
     protected DiagramElementOperation _currentOperation = DiagramElementOperation.None;
 
     public event EventHandler BeginUndoableOperation;
@@ -74,17 +74,25 @@ namespace NClass.DiagramEditor.ClassDiagram
         if (_isActive != value)
         {
           if (value)
+          {
             OnActivating(EventArgs.Empty);
+          }
           else
+          {
             OnDeactivating(EventArgs.Empty);
+          }
 
           _isActive = value;
           NeedsRedraw = true;
 
           if (_isActive)
+          {
             OnActivated(EventArgs.Empty);
+          }
           else
+          {
             OnDeactivated(EventArgs.Empty);
+          }
         }
       }
     }
@@ -187,7 +195,9 @@ namespace NClass.DiagramEditor.ClassDiagram
     public void Draw(IGraphics g, Style style)
     {
       if (style == null)
+      {
         throw new ArgumentNullException("style");
+      }
 
       Draw(g, false, style);
     }
@@ -201,7 +211,7 @@ namespace NClass.DiagramEditor.ClassDiagram
 
     protected internal abstract Rectangle GetLogicalArea();
 
-    protected internal abstract void DrawSelectionLines(Graphics g, float zoom, Point offset);
+    protected internal abstract void DrawSelectionLines(IGraphics g, float zoom, Point offset);
 
     protected internal abstract bool TrySelect(RectangleF frame);
 

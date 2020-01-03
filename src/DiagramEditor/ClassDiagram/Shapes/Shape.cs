@@ -52,7 +52,9 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
     protected Shape(IEntity entity)
     {
       if (entity == null)
+      {
         throw new ArgumentNullException("entity");
+      }
 
       _location = Point.Empty;
       _size = DefaultSize;
@@ -85,9 +87,13 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
       {
         _minimumSize = value;
         if (_minimumSize.Width > _size.Width)
+        {
           Width = value.Width;
+        }
         if (_minimumSize.Height > _size.Height)
+        {
           Height = value.Height;
+        }
       }
     }
 
@@ -164,15 +170,21 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
       set
       {
         if (value.Width < MinimumSize.Width)
+        {
           value.Width = MinimumSize.Width;
+        }
         if (value.Height < MinimumSize.Height)
+        {
           value.Height = MinimumSize.Height;
+        }
 
         if (_size != value)
         {
           Size change = new Size(value.Width - Width, value.Height - Height);
           if (IsResizing)
+          {
             _mouseDownLocation += change;
+          }
           _size = value;
           OnResize(new ResizeEventArgs(change));
           OnModified(EventArgs.Empty);
@@ -189,13 +201,17 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
       set
       {
         if (value < MinimumSize.Width)
+        {
           value = MinimumSize.Width;
+        }
 
         if (_size.Width != value)
         {
           Size change = new Size(value - Width, 0);
           if (IsResizing)
+          {
             _mouseDownLocation.X += change.Width;
+          }
           _size.Width = value;
           OnResize(new ResizeEventArgs(change));
           OnModified(EventArgs.Empty);
@@ -212,13 +228,17 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
       set
       {
         if (value < MinimumSize.Height)
+        {
           value = MinimumSize.Height;
+        }
 
         if (_size.Height != value)
         {
           Size change = new Size(0, value - Height);
           if (IsResizing)
+          {
             _mouseDownLocation.Y += change.Height;
+          }
           _size.Height = value;
           OnResize(new ResizeEventArgs(change));
           OnModified(EventArgs.Empty);
@@ -288,9 +308,13 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
         area.Inflate(borderSize, borderSize);
 
         if (style.ShadowOffset.Width > borderSize)
+        {
           area.Width += style.ShadowOffset.Width - borderSize;
+        }
         if (style.ShadowOffset.Height > borderSize)
+        {
           area.Height += style.ShadowOffset.Height - borderSize;
+        }
 
         return area;
       }
@@ -321,7 +345,9 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
     protected virtual ResizeMode GetResizeMode(AbsoluteMouseEventArgs e)
     {
       if (e.Zoom <= UndreadableZoom)
+      {
         return ResizeMode.None;
+      }
 
       ResizeMode mode = ResizeMode.None;
       float squareSize = SelectionMargin / e.Zoom;
@@ -338,10 +364,14 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
         e.Y < verCenter + squareSize / 2);
 
       if (right && (top || middle || bottom))
+      {
         mode |= ResizeMode.Right;
+      }
 
       if (bottom && (left || center || right))
+      {
         mode |= ResizeMode.Bottom;
+      }
 
       return mode;
     }
@@ -384,7 +414,7 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
       return rectangle;
     }
 
-    protected internal override void DrawSelectionLines(Graphics g, float zoom, Point offset)
+    protected internal override void DrawSelectionLines(IGraphics g, float zoom, Point offset)
     {
       if (IsSelected)
       {
@@ -410,7 +440,7 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
       }
     }
 
-    private void DrawResizingSquares(Graphics g, Rectangle frame)
+    private void DrawResizingSquares(IGraphics g, Rectangle frame)
     {
       int squareSize = (SelectionMargin - 4);
 
@@ -422,9 +452,10 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
           {
             int x = frame.X + (frame.Width * column / 2) - squareSize / 2;
             int y = frame.Y + (frame.Height * row / 2) - squareSize / 2;
+            var rect = new Rectangle(x, y, squareSize, squareSize);
 
-            g.FillRectangle(Brushes.White, x, y, squareSize, squareSize);
-            g.DrawRectangle(SelectionSquarePen, x, y, squareSize, squareSize);
+            g.FillRectangle(Brushes.White, rect);
+            g.DrawRectangle(SelectionSquarePen, rect);
           }
         }
       }
@@ -456,9 +487,13 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
         newPosition.Offset(offset.Width, offset.Height);
 
         if (newPosition.Left < padding)
+        {
           offset.Width += (padding - newPosition.Left);
+        }
         if (newPosition.Top < padding)
+        {
           offset.Height += (padding - newPosition.Top);
+        }
       }
       return offset;
     }
@@ -474,10 +509,12 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
     internal void AutoWidth()
     {
       if (Graphics != null)
+      {
         Width = (int)GetRequiredWidth(Graphics, Style.CurrentStyle) + 1;
+      }
     }
 
-    protected virtual float GetRequiredWidth(Graphics g, Style style)
+    protected virtual float GetRequiredWidth(IGraphics g, Style style)
     {
       return MinimumSize.Width;
     }
@@ -566,7 +603,9 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
         bool pressed = Contains(e.Location);
 
         if (e.Button == MouseButtons.Left)
+        {
           pressed |= (IsSelected && GetResizeMode(e) != ResizeMode.None);
+        }
 
         if (pressed)
         {
@@ -595,9 +634,13 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
           contains = Contains(e.Location);
 
           if (Contains(e.Location) && _mouseLeaved)
+          {
             OnMouseEnter(EventArgs.Empty);
+          }
           else if (!Contains(e.Location) && !_mouseLeaved)
+          {
             OnMouseLeave(EventArgs.Empty);
+          }
 
           contains |= (IsSelected && GetResizeMode(e) != ResizeMode.None);
         }
@@ -620,7 +663,9 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
       else // Already handled
       {
         if (!_mouseLeaved)
+        {
           OnMouseLeave(EventArgs.Empty);
+        }
       }
     }
 
@@ -645,7 +690,9 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
         bool doubleClicked = Contains(e.Location);
 
         if (e.Button == MouseButtons.Left)
+        {
           doubleClicked |= (IsSelected && GetResizeMode(e) != ResizeMode.None);
+        }
 
         if (doubleClicked)
         {
@@ -730,9 +777,13 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
       ResizeMode resizeMode = GetResizeMode(e);
 
       if ((resizeMode & ResizeMode.Right) != 0)
+      {
         AutoWidth();
+      }
       if ((resizeMode & ResizeMode.Bottom) != 0)
+      {
         AutoHeight();
+      }
     }
 
     protected virtual void OnMove(MoveEventArgs e)

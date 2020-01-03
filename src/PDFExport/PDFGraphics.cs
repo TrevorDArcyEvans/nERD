@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Text;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -231,8 +232,7 @@ namespace PDFExport
       RestoreInitialClip();
       CombineClippingRegion(combineMode, new Region(path));
 
-      _graphics.IntersectClip(new XGraphicsPath(path.PathData.Points, path.PathData.Types,
-                                               FillModeToXFillMode(path.FillMode)));
+      _graphics.IntersectClip(new XGraphicsPath(path.PathData.Points, path.PathData.Types, FillModeToXFillMode(path.FillMode)));
     }
 
     public void SetClip(Region region, CombineMode combineMode)
@@ -996,5 +996,25 @@ namespace PDFExport
     #endregion
 
     #endregion
+
+    public GraphicsState Save()
+    {
+      throw new NotImplementedException();
+    }
+
+    public void Restore(GraphicsState state)
+    {
+      throw new NotImplementedException();
+    }
+
+    public SmoothingMode SmoothingMode { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public TextRenderingHint TextRenderingHint { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public float DpiX => throw new NotImplementedException();
+    public float DpiY => throw new NotImplementedException();
+
+    public SizeF MeasureString(string text, Font font, PointF origin, StringFormat stringFormat)
+    {
+      throw new NotImplementedException();
+    }
   }
 }

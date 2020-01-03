@@ -45,7 +45,7 @@ namespace NClass.DiagramEditor
 
       if (DiagramElement.Graphics == null)
       {
-        DiagramElement.Graphics = CreateGraphics();
+        DiagramElement.Graphics = new GdiGraphics(CreateGraphics());
       }
     }
 
@@ -449,16 +449,15 @@ namespace NClass.DiagramEditor
       }
     }
 
-    public void DrawDocument(Graphics g)
+    public void DrawDocument(IGraphics g)
     {
       if (HasDocument)
       {
-        IGraphics graphics = new GdiGraphics(g);
-        Document.Print(graphics, false, Style.CurrentStyle);
+        Document.Print(g, false, Style.CurrentStyle);
       }
     }
 
-    private void DrawContent(Graphics g)
+    private void DrawContent(IGraphics g)
     {
       if (HasDocument)
       {
@@ -700,7 +699,8 @@ namespace NClass.DiagramEditor
 
       if (HasDocument)
       {
-        DrawContent(e.Graphics);
+        var graphics = new GdiGraphics(e.Graphics);
+        DrawContent(graphics);
       }
     }
 

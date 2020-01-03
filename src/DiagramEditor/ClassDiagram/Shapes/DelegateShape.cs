@@ -244,7 +244,7 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
       }
     }
 
-    protected internal override void DrawSelectionLines(Graphics g, float zoom, Point offset)
+    protected internal override void DrawSelectionLines(IGraphics g, float zoom, Point offset)
     {
       base.DrawSelectionLines(g, zoom, offset);
 
@@ -271,7 +271,7 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
       }
     }
 
-    protected override float GetRequiredWidth(Graphics g, Style style)
+    protected override float GetRequiredWidth(IGraphics g, Style style)
     {
       float requiredWidth = 0;
 

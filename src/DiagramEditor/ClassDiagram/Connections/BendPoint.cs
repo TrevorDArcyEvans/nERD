@@ -122,7 +122,7 @@ namespace NClass.DiagramEditor.ClassDiagram.Connections
       return MemberwiseClone();
     }
 
-    internal void Draw(Graphics g, bool onScreen, float zoom, Point offset)
+    internal void Draw(IGraphics g, bool onScreen, float zoom, Point offset)
     {
       int x = (int)(X * zoom) - SquareSize / 2 - offset.X;
       int y = (int)(Y * zoom) - SquareSize / 2 - offset.Y;
@@ -131,7 +131,8 @@ namespace NClass.DiagramEditor.ClassDiagram.Connections
       if (AutoPosition)
       {
         SquarePen.Color = RelativeToStartShape ? LightStartColor : LightEndColor;
-        g.DrawRectangle(SquarePen, square.X, square.Y, square.Width, square.Height);
+        var rect = new Rectangle(square.X, square.Y, square.Width, square.Height);
+        g.DrawRectangle(SquarePen, rect);
       }
       else
       {

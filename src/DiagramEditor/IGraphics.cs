@@ -15,6 +15,7 @@
 
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Text;
 
 namespace NClass.DiagramEditor
 {
@@ -53,5 +54,13 @@ namespace NClass.DiagramEditor
     void SetClip(Rectangle rect, CombineMode combineMode);
     void SetClip(RectangleF rect, CombineMode combineMode);
     void SetClip(Region region, CombineMode combineMode);
+
+    GraphicsState Save();
+    void Restore(GraphicsState state);
+    SmoothingMode SmoothingMode { get; set; }
+    TextRenderingHint TextRenderingHint { get; set; }
+    float DpiX { get; }
+    float DpiY { get; }
+    SizeF MeasureString(string text, Font font, PointF origin, StringFormat stringFormat);
   }
 }

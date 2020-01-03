@@ -74,14 +74,18 @@ namespace NClass.GUI
     protected override void OnMouseDown(MouseEventArgs e)
     {
       if (e.Button == MouseButtons.Left)
+      {
         MoveVisibleArea(e.Location);
+      }
       base.OnMouseDown(e);
     }
 
     protected override void OnMouseMove(MouseEventArgs e)
     {
       if (e.Button == MouseButtons.Left)
+      {
         MoveVisibleArea(e.Location);
+      }
       base.OnMouseMove(e);
     }
 
@@ -119,7 +123,7 @@ namespace NClass.GUI
         float zoom = GetZoom();
         g.ScaleTransform(zoom, zoom);
 
-        DocumentVisualizer.DrawDocument(g);
+        DocumentVisualizer.DrawDocument(new GdiGraphics(g));
 
         g.ResetTransform();
 
@@ -134,9 +138,13 @@ namespace NClass.GUI
             (int)(DocumentVisualizer.VisibleArea.Height * zoom)
           );
           if (frame.Right > ClientRectangle.Right)
+          {
             frame.Width = ClientRectangle.Right - frame.Left - 1;
+          }
           if (frame.Bottom > ClientRectangle.Bottom)
+          {
             frame.Height = ClientRectangle.Bottom - frame.Top - 1;
+          }
           DrawFrame(g, frame);
         }
       }
@@ -145,15 +153,15 @@ namespace NClass.GUI
     private void DrawFrame(Graphics g, Rectangle frame)
     {
       FrameColor = Color.FromArgb(80, 100, 150);
-      Pen pen = new Pen(FrameColor);
-
-      for (int alpha = 256; alpha >= 4; alpha /= 2)
+      using (Pen pen = new Pen(FrameColor))
       {
-        pen.Color = Color.FromArgb(alpha - 1, FrameColor);
-        g.DrawRectangle(pen, frame);
-        frame.Inflate(1, 1);
+        for (int alpha = 256; alpha >= 4; alpha /= 2)
+        {
+          pen.Color = Color.FromArgb(alpha - 1, FrameColor);
+          g.DrawRectangle(pen, frame);
+          frame.Inflate(1, 1);
+        }
       }
-      pen.Dispose();
     }
 
     protected override void OnPaint(PaintEventArgs e)

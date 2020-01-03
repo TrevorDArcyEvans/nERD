@@ -238,7 +238,7 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
       DrawHeaderText(g, style);
     }
 
-    protected override float GetRequiredWidth(Graphics g, Style style)
+    protected override float GetRequiredWidth(IGraphics g, Style style)
     {
       return Width;
     }

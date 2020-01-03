@@ -615,7 +615,7 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
         DrawContent(g, style);
     }
 
-    protected override float GetRequiredWidth(Graphics g, Style style)
+    protected override float GetRequiredWidth(IGraphics g, Style style)
     {
       float nameWidth;
       float identifierWidth = 0;

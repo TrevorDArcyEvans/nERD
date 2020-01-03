@@ -511,7 +511,7 @@ namespace NClass.DiagramEditor.ClassDiagram.Connections
       );
     }
 
-    protected internal override void DrawSelectionLines(Graphics g, float zoom, Point offset)
+    protected internal override void DrawSelectionLines(IGraphics g, float zoom, Point offset)
     {
       if (IsSelected)
       {
@@ -561,7 +561,9 @@ namespace NClass.DiagramEditor.ClassDiagram.Connections
         if (zoom > UndreadableZoom)
         {
           foreach (BendPoint point in _bendPoints)
+          {
             point.Draw(g, true, zoom, offset);
+          }
         }
       }
     }

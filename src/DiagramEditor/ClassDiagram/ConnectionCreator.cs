@@ -314,7 +314,7 @@ namespace NClass.DiagramEditor.ClassDiagram
       }
     }
 
-    public void Draw(Graphics g)
+    public void Draw(IGraphics g)
     {
       if (First != null)
       {

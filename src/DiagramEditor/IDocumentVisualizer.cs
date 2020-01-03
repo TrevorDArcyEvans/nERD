@@ -43,6 +43,6 @@ namespace NClass.DiagramEditor
 
     void AutoZoom(bool selectedOnly);
 
-    void DrawDocument(Graphics g);
+    void DrawDocument(IGraphics g);
   }
 }
