@@ -37,7 +37,57 @@ namespace NClass.DiagramEditor
 
     public RectangleF ClipBounds
     {
-      get { return _graphics.ClipBounds; }
+      get
+      {
+        if (!MonoHelper.IsRunningOnMono)
+        {
+          return _graphics.ClipBounds;
+        }
+
+        // START_HACK
+        // There are memory issues dating back to 2008 (!) when running under Mono on Linux:
+        //
+        //    [Mono-list] OutOfMemoryException after scale transform a Region
+        //    https://mono.github.io/mail-archives/mono-list/2008-September/039693.html
+        //
+        // This typically occurs when running full screen on a high resolution monitor and will result
+        // in an exception with an error message like:
+        //
+        // **(mono: 29613): WARNING * *: 14:41:06.763: Path conversion requested 12110400 bytes(2320 x 1305).Maximum size is 8388608 bytes.
+        // System.OutOfMemoryException: Not enough memory to complete operation[GDI + status: OutOfMemory]
+        //   at System.Drawing.GDIPlus.CheckStatus(System.Drawing.Status status)[0x000b7] in < 5e8677e298c34b8b9ba421a545129d69 >:0
+        //   at System.Drawing.Graphics.get_ClipBounds()[0x00015] in < 5e8677e298c34b8b9ba421a545129d69 >:0
+        //   at(wrapper remoting - invoke - with - check) System.Drawing.Graphics.get_ClipBounds()
+        //   at NClass.DiagramEditor.GdiGraphics.get_ClipBounds()[0x00001] in < 64616348232f476fac04199c6feee710 >:0
+        //   at NClass.DiagramEditor.ClassDiagram.Diagram.Display(NClass.DiagramEditor.IGraphics g)[0x00001] in < 64616348232f476fac04199c6feee710 >:0
+        //   at NClass.DiagramEditor.Canvas.DrawContent(NClass.DiagramEditor.IGraphics g)[0x000e7] in < 64616348232f476fac04199c6feee710 >:0
+        //   at NClass.DiagramEditor.Canvas.OnPaint(System.Windows.Forms.PaintEventArgs e)[0x00020] in < 64616348232f476fac04199c6feee710 >:0
+        //   at System.Windows.Forms.Control.WmPaint(System.Windows.Forms.Message & m)[0x0007b] in < 5bcdf2a3746f4353acffcd001a2c6899 >:0
+        //   at System.Windows.Forms.Control.WndProc(System.Windows.Forms.Message & m)[0x001a4] in < 5bcdf2a3746f4353acffcd001a2c6899 >:0
+        //   at System.Windows.Forms.ScrollableControl.WndProc(System.Windows.Forms.Message & m)[0x00000] in < 5bcdf2a3746f4353acffcd001a2c6899 >:0
+        //   at System.Windows.Forms.ContainerControl.WndProc(System.Windows.Forms.Message & m)[0x00029] in < 5bcdf2a3746f4353acffcd001a2c6899 >:0
+        //   at System.Windows.Forms.UserControl.WndProc(System.Windows.Forms.Message & m)[0x00027] in < 5bcdf2a3746f4353acffcd001a2c6899 >:0
+        //   at NClass.DiagramEditor.Canvas.WndProc(System.Windows.Forms.Message & m)[0x00001] in < 64616348232f476fac04199c6feee710 >:0
+        //   at System.Windows.Forms.Control + ControlWindowTarget.OnMessage(System.Windows.Forms.Message & m)[0x00000] in < 5bcdf2a3746f4353acffcd001a2c6899 >:0
+        //   at System.Windows.Forms.Control + ControlNativeWindow.WndProc(System.Windows.Forms.Message & m)[0x0000b] in < 5bcdf2a3746f4353acffcd001a2c6899 >:0
+        //   at System.Windows.Forms.NativeWindow.WndProc(System.IntPtr hWnd, System.Windows.Forms.Msg msg, System.IntPtr wParam, System.IntPtr lParam)[0x00085] in < 5bcdf2a3746f4353acffcd001a2c6899 >:0
+        //
+        // One workaround is to run in windowed mode ie less that full screen.  However, as soon as the user swwitches to full screen,
+        // either accidentally or otherwise, then the app will crash.
+        //
+        // Thus, this hack swallows the out-of-memory exception and returns a minimal clipping box.
+        // The effect of this is that the view will occasionally turn blank/white.
+        // Bizzarely, if the view is scrolled slightly to the right, everything is OK - go figure...
+        try
+        {
+          return _graphics.ClipBounds;
+        }
+        catch (OutOfMemoryException)
+        {
+          return new RectangleF();
+        }
+        // END_HACK
+      }
     }
 
     public Matrix Transform
