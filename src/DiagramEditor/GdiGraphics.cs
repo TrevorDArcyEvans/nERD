@@ -106,8 +106,7 @@ namespace NClass.DiagramEditor
       _graphics.DrawString(s, font, brush, point, format);
     }
 
-    public void DrawString(string s, Font font, Brush brush, RectangleF layoutRectangle,
-      StringFormat format)
+    public void DrawString(string s, Font font, Brush brush, RectangleF layoutRectangle, StringFormat format)
     {
       _graphics.DrawString(s, font, brush, layoutRectangle, format);
     }

@@ -1239,17 +1239,25 @@ namespace NClass.DiagramEditor.ClassDiagram
         else if (e.KeyCode == Keys.Up && ActiveElement != null)
         {
           if (e.Shift || e.Control)
+          {
             ActiveElement.MoveUp();
+          }
           else
+          {
             ActiveElement.SelectPrevious();
+          }
         }
         // Down
         else if (e.KeyCode == Keys.Down && ActiveElement != null)
         {
           if (e.Shift || e.Control)
+          {
             ActiveElement.MoveDown();
+          }
           else
+          {
             ActiveElement.SelectNext();
+          }
         }
         // Ctrl + X
         else if (e.KeyCode == Keys.X && e.Modifiers == Keys.Control)
@@ -1476,6 +1484,7 @@ namespace NClass.DiagramEditor.ClassDiagram
           connection.Offset(offset);
         }
       }
+
       RecalculateSize();
     }
 
