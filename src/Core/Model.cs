@@ -52,7 +52,9 @@ namespace NClass.Core
     public Model(string name, Language language)
     {
       if (name != null && name.Length == 0)
+      {
         throw new ArgumentException("Name cannot empty string.");
+      }
 
       _name = name;
       Language = language ?? throw new ArgumentNullException("language");
@@ -64,9 +66,13 @@ namespace NClass.Core
       get
       {
         if (_name == null)
+        {
           return Strings.Untitled;
+        }
         else
+        {
           return _name;
+        }
       }
       set
       {
@@ -397,8 +403,7 @@ namespace NClass.Core
     #region Composition
     public AssociationRelationship AddComposition(TypeBase first, TypeBase second)
     {
-      AssociationRelationship composition = new AssociationRelationship(
-        first, second, AssociationType.Composition);
+      AssociationRelationship composition = new AssociationRelationship(first, second, AssociationType.Composition);
 
       AddAssociation(composition);
       return composition;
@@ -408,8 +413,7 @@ namespace NClass.Core
     #region Aggregation
     public AssociationRelationship AddAggregation(TypeBase first, TypeBase second)
     {
-      AssociationRelationship aggregation = new AssociationRelationship(
-        first, second, AssociationType.Aggregation);
+      AssociationRelationship aggregation = new AssociationRelationship(first, second, AssociationType.Aggregation);
 
       AddAssociation(aggregation);
       return aggregation;
@@ -423,8 +427,7 @@ namespace NClass.Core
     public GeneralizationRelationship AddGeneralization(CompositeType derivedType,
       CompositeType baseType)
     {
-      GeneralizationRelationship generalization =
-        new GeneralizationRelationship(derivedType, baseType);
+      GeneralizationRelationship generalization = new GeneralizationRelationship(derivedType, baseType);
 
       AddGeneralization(generalization);
       return generalization;
@@ -456,8 +459,7 @@ namespace NClass.Core
     /// </exception>
     public RealizationRelationship AddRealization(TypeBase implementer, InterfaceType baseType)
     {
-      RealizationRelationship realization = new RealizationRelationship(
-        implementer, baseType);
+      RealizationRelationship realization = new RealizationRelationship(implementer, baseType);
 
       AddRealization(realization);
       return realization;
@@ -682,7 +684,9 @@ namespace NClass.Core
     public void Serialize(XmlElement node)
     {
       if (node == null)
+      {
         throw new ArgumentNullException("root");
+      }
 
       XmlElement nameElement = node.OwnerDocument.CreateElement("Name");
       nameElement.InnerText = Name;
@@ -704,14 +708,20 @@ namespace NClass.Core
     public void Deserialize(XmlElement node)
     {
       if (node == null)
+      {
         throw new ArgumentNullException("root");
+      }
       Loading = true;
 
       XmlElement nameElement = node["Name"];
       if (nameElement == null || nameElement.InnerText == "")
+      {
         _name = null;
+      }
       else
+      {
         _name = nameElement.InnerText;
+      }
 
       XmlElement languageElement = node["Language"];
       try
@@ -737,7 +747,9 @@ namespace NClass.Core
     private void LoadEntitites(XmlNode root)
     {
       if (root == null)
+      {
         throw new ArgumentNullException("root");
+      }
 
       XmlNodeList nodeList = root.SelectNodes("Entities/Entity");
 
@@ -793,7 +805,9 @@ namespace NClass.Core
     private void LoadRelationships(XmlNode root)
     {
       if (root == null)
+      {
         throw new ArgumentNullException("root");
+      }
 
       XmlNodeList nodeList = root.SelectNodes("Relationships/Relationship");
 
@@ -878,7 +892,9 @@ namespace NClass.Core
     private void SaveEntitites(XmlElement node)
     {
       if (node == null)
+      {
         throw new ArgumentNullException("root");
+      }
 
       XmlElement entitiesChild = node.OwnerDocument.CreateElement("Entities");
 
@@ -896,7 +912,9 @@ namespace NClass.Core
     private void SaveRelationships(XmlNode root)
     {
       if (root == null)
+      {
         throw new ArgumentNullException("root");
+      }
 
       XmlElement relationsChild = root.OwnerDocument.CreateElement("Relationships");
 
@@ -998,9 +1016,13 @@ namespace NClass.Core
     public override string ToString()
     {
       if (IsDirty)
+      {
         return Name + "*";
+      }
       else
+      {
         return Name;
+      }
     }
   }
 }

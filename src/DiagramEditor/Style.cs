@@ -39,8 +39,7 @@ namespace NClass.DiagramEditor
     public static event EventHandler CurrentStyleChanged;
 
     private static readonly SortedList<string, Style> Styles = new SortedList<string, Style>();
-    private static readonly string SettingsDir = Path.Combine(
-      Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "NClass");
+    private static readonly string SettingsDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "NClass");
     private static readonly string UserStylePath = Path.Combine(SettingsDir, "style.dst");
 
     static Style()
@@ -78,7 +77,9 @@ namespace NClass.DiagramEditor
         if (value != null && _currentStyle != value)
         {
           if (_currentStyle != null)
+          {
             _currentStyle.Dispose();
+          }
           _currentStyle = (Style)value.Clone();
           SaveCurrentStyle();
           if (CurrentStyleChanged != null)
@@ -108,16 +109,24 @@ namespace NClass.DiagramEditor
       get
       {
         if (string.IsNullOrEmpty(_name))
+        {
           return Strings.Untitled;
+        }
         else
+        {
           return _name;
+        }
       }
       set
       {
         if (value == Strings.Untitled)
+        {
           _name = null;
+        }
         else
+        {
           _name = value;
+        }
       }
     }
 
@@ -129,16 +138,24 @@ namespace NClass.DiagramEditor
       get
       {
         if (string.IsNullOrEmpty(_author))
+        {
           return Strings.Unknown;
+        }
         else
+        {
           return _author;
+        }
       }
       set
       {
         if (value == Strings.Unknown)
+        {
           _author = null;
+        }
         else
+        {
           _author = value;
+        }
       }
     }
 
@@ -504,9 +521,13 @@ namespace NClass.DiagramEditor
       set
       {
         if (value.Width < 0)
+        {
           value.Width = 0;
+        }
         if (value.Height < 0)
+        {
           value.Height = 0;
+        }
 
         _shadowOffset = value;
       }
@@ -530,7 +551,9 @@ namespace NClass.DiagramEditor
       set
       {
         if (value && ShowStereotype)
+        {
           ShowStereotype = false;
+        }
         _showSignature = value;
       }
     }
@@ -548,7 +571,9 @@ namespace NClass.DiagramEditor
       set
       {
         if (value && ShowSignature)
+        {
           ShowSignature = false;
+        }
         _showStereotypes = value;
       }
     }
@@ -619,9 +644,13 @@ namespace NClass.DiagramEditor
       set
       {
         if (value < 1)
+        {
           _classBorderWidth = 1;
+        }
         else
+        {
           _classBorderWidth = value;
+        }
       }
     }
 
@@ -647,9 +676,13 @@ namespace NClass.DiagramEditor
       set
       {
         if (value < 0)
+        {
           _classRoundingSize = 0;
+        }
         else
+        {
           _classRoundingSize = value;
+        }
       }
     }
 
@@ -675,9 +708,13 @@ namespace NClass.DiagramEditor
       set
       {
         if (value < 1)
+        {
           _abstractClassBorderWidth = 1;
+        }
         else
+        {
           _abstractClassBorderWidth = value;
+        }
       }
     }
 
@@ -699,9 +736,13 @@ namespace NClass.DiagramEditor
       set
       {
         if (value < 1)
+        {
           _sealedClassBorderWidth = 1;
+        }
         else
+        {
           _sealedClassBorderWidth = value;
+        }
       }
     }
 
@@ -723,9 +764,13 @@ namespace NClass.DiagramEditor
       set
       {
         if (value < 1)
+        {
           _staticClassBorderWidth = 1;
+        }
         else
+        {
           _staticClassBorderWidth = value;
+        }
       }
     }
 
@@ -761,9 +806,13 @@ namespace NClass.DiagramEditor
       set
       {
         if (value < 1)
+        {
           _structureBorderWidth = 1;
+        }
         else
+        {
           _structureBorderWidth = value;
+        }
       }
     }
 
@@ -790,9 +839,13 @@ namespace NClass.DiagramEditor
       set
       {
         if (value < 0)
+        {
           _structureRoundingSize = 0;
+        }
         else
+        {
           _structureRoundingSize = value;
+        }
       }
     }
 
@@ -828,9 +881,13 @@ namespace NClass.DiagramEditor
       set
       {
         if (value < 1)
+        {
           _interfaceBorderWidth = 1;
+        }
         else
+        {
           _interfaceBorderWidth = value;
+        }
       }
     }
 
@@ -857,9 +914,13 @@ namespace NClass.DiagramEditor
       set
       {
         if (value < 0)
+        {
           _interfaceRoundingSize = 0;
+        }
         else
+        {
           _interfaceRoundingSize = value;
+        }
       }
     }
 
@@ -895,9 +956,13 @@ namespace NClass.DiagramEditor
       set
       {
         if (value < 1)
+        {
           _enumBorderWidth = 1;
+        }
         else
+        {
           _enumBorderWidth = value;
+        }
       }
     }
 
@@ -929,9 +994,13 @@ namespace NClass.DiagramEditor
       set
       {
         if (value < 0)
+        {
           _enumRoundingSize = 0;
+        }
         else
+        {
           _enumRoundingSize = value;
+        }
       }
     }
 
@@ -967,9 +1036,13 @@ namespace NClass.DiagramEditor
       set
       {
         if (value < 1)
+        {
           _delegateBorderWidth = 1;
+        }
         else
+        {
           _delegateBorderWidth = value;
+        }
       }
     }
 
@@ -1001,9 +1074,13 @@ namespace NClass.DiagramEditor
       set
       {
         if (value < 0)
+        {
           _delegateRoundingSize = 0;
+        }
         else
+        {
           _delegateRoundingSize = value;
+        }
       }
     }
 
@@ -1039,9 +1116,13 @@ namespace NClass.DiagramEditor
       set
       {
         if (value < 1)
+        {
           _commentBorderWidth = 1;
+        }
         else
+        {
           _commentBorderWidth = value;
+        }
       }
     }
 
@@ -1101,9 +1182,13 @@ namespace NClass.DiagramEditor
       set
       {
         if (value < 1)
+        {
           _stateBorderWidth = 1;
+        }
         else
+        {
           _stateBorderWidth = value;
+        }
       }
     }
 
@@ -1124,9 +1209,13 @@ namespace NClass.DiagramEditor
       set
       {
         if (value < 1)
+        {
           _relationshipDashSize = 1;
+        }
         else
+        {
           _relationshipDashSize = value;
+        }
       }
     }
 
@@ -1172,9 +1261,13 @@ namespace NClass.DiagramEditor
       set
       {
         if (value < 1)
+        {
           _relationshipWidth = 1;
+        }
         else
+        {
           _relationshipWidth = value;
+        }
       }
     }
 
@@ -1200,9 +1293,13 @@ namespace NClass.DiagramEditor
       set
       {
         if (value < 1)
+        {
           _transitionWidth = 1;
+        }
         else
+        {
           _transitionWidth = value;
+        }
       }
     }
 
@@ -1244,7 +1341,9 @@ namespace NClass.DiagramEditor
         {
           string[] files = Directory.GetFiles(StylesDirectory, "*.dst");
           foreach (string file in files)
+          {
             Load(file);
+          }
 
           return true;
         }
@@ -1284,7 +1383,9 @@ namespace NClass.DiagramEditor
           Style result = (Style)formatter.Deserialize(stream);
 
           if (addToList && result != null)
+          {
             AddToList(result, path);
+          }
 
           return result;
         }
@@ -1319,7 +1420,9 @@ namespace NClass.DiagramEditor
         }
 
         if (addToList)
+        {
           AddToList(Clone(), path);
+        }
 
         return true;
       }
