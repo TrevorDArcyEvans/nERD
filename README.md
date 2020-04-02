@@ -56,5 +56,4 @@ Please always use the latest version of Mono as there may be little compatibilit
 To compile the project, you will need Visual Studio 2019.
 
 ## Known Issues
-* crashes on Linux if screen resolution is too high, typically when running full screen
-  * workaround is to run nERD windowed ie not full screen
+* model explorer does not render completely on Linux
