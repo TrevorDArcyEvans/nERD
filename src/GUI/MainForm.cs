@@ -176,8 +176,7 @@ namespace NClass.GUI
         {
           if (type.IsSubclassOf(typeof(Plugin)))
           {
-            NClassEnvironment environment =
-              new NClassEnvironment(Workspace.Default, _docManager);
+            NClassEnvironment environment = new NClassEnvironment(Workspace.Default, _docManager);
             Plugin plugin = (Plugin)Activator.CreateInstance(type, environment);
             _plugins.Add(plugin);
           }
