@@ -34,6 +34,7 @@ namespace NClass.StateTransitionDiagram
     public override Dictionary<FieldModifier, string> ValidFieldModifiers => throw new NotImplementedException();
     public override Dictionary<OperationModifier, string> ValidOperationModifiers => throw new NotImplementedException();
 
+    public override bool SupportsClasses => false;
     public override bool SupportsAssemblyImport => false;
     public override bool SupportsInterfaces => false;
     public override bool SupportsStructures => false;

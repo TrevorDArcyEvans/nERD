@@ -140,6 +140,7 @@ namespace NClass.DiagramEditor.ClassDiagram.ContextMenus
       base.ValidateMenuItems(diagram);
       mnuPaste.Enabled = diagram.CanPasteFromClipboard;
 
+      mnuNewClass.Visible = diagram.Language.SupportsClasses;
       mnuNewInterface.Visible = diagram.Language.SupportsInterfaces;
       mnuNewStructure.Visible = diagram.Language.SupportsStructures;
       mnuNewDelegate.Visible = diagram.Language.SupportsDelegates;

@@ -42,6 +42,8 @@ namespace NClass.EntityRelationshipDiagram
 
     public override bool SupportsAssemblyImport => false;
 
+    public override bool SupportsClasses => true;
+
     public override bool SupportsInterfaces => false;
 
     public override bool SupportsStructures => false;

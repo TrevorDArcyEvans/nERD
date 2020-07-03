@@ -62,6 +62,7 @@ namespace NClass.DiagramEditor.ClassDiagram
         _diagram = document as Diagram;
         _diagram.SelectionChanged += new EventHandler(Diagram_SelectionChanged);
 
+        mnuNewClass.Visible = toolNewClass.Visible = _diagram.Language.SupportsClasses;
         mnuNewInterface.Visible = toolNewInterface.Visible = _diagram.Language.SupportsInterfaces;
         mnuNewStructure.Visible = toolNewStructure.Visible = _diagram.Language.SupportsStructures;
         mnuNewDelegate.Visible = toolNewDelegate.Visible = _diagram.Language.SupportsDelegates;

@@ -19,6 +19,8 @@ namespace NClass.Core
   {
     public override bool SupportsAssemblyImport => true;
 
+    public override bool SupportsClasses => true;
+
     public sealed override bool SupportsInterfaces => true;
 
     public sealed override bool SupportsStructures => true;

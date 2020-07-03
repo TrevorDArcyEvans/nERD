@@ -67,6 +67,11 @@ namespace NClass.Core
       get;
     }
 
+    public abstract bool SupportsClasses
+    {
+      get;
+    }
+
     public abstract bool SupportsStructures
     {
       get;
