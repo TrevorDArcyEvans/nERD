@@ -2893,6 +2893,15 @@ namespace NClass.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Source-Sink Relationship.
+        /// </summary>
+        public static string SourceSinkRelationship {
+            get {
+                return ResourceManager.GetString("SourceSinkRelationship", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to loop relationships - unsupported as no reliable way to determine foreign key.
         /// </summary>
         public static string SqlGenError_LoopRelationship {

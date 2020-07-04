@@ -76,6 +76,7 @@
     <Compile Include="ClassDiagram\Connections\CommentConnection.cs" />
     <Compile Include="ClassDiagram\Connections\Generalization.cs" />
     <Compile Include="ClassDiagram\Connections\Realization.cs" />
+    <Compile Include="ClassDiagram\Connections\SourceSinkConnection.cs" />
     <Compile Include="ClassDiagram\Connections\TransitionConnection.cs" />
     <Compile Include="ClassDiagram\ContextMenus\BlankContextMenu.cs" />
     <Compile Include="ClassDiagram\ContextMenus\DiagramContextMenu.cs" />
@@ -98,6 +99,12 @@
     </Compile>
     <Compile Include="ClassDiagram\Editors\CommentEditor.Designer.cs">
       <DependentUpon>CommentEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClassDiagram\Editors\SourceSinkEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ClassDiagram\Editors\SourceSinkEditor.Designer.cs">
+      <DependentUpon>SourceSinkEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="ClassDiagram\Editors\TransitionEditor.cs">
       <SubType>UserControl</SubType>
@@ -413,6 +420,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\transition.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sink_source.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

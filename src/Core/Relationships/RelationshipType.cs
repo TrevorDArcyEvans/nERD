@@ -1,5 +1,6 @@
-// NClass - Free class diagram editor
+﻿// NClass - Free class diagram editor
 // Copyright (C) 2006-2009 Balazs Tihanyi
+// Copyright (C) 2016-2020 Trevor D'Arcy-Evans
 // 
 // This program is free software; you can redistribute it and/or modify it under 
 // the terms of the GNU General Public License as published by the Free Software 
@@ -26,6 +27,7 @@ namespace NClass.Core
     Nesting,
     Comment,
     EntityRelationship,
-    Transition
+    Transition,
+    SourceSink
   }
 }

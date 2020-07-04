@@ -1523,6 +1523,16 @@ namespace NClass.DiagramEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap SinkSsource {
+            get {
+                object obj = ResourceManager.GetObject("SinkSsource", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap SortByAccess {
             get {
                 object obj = ResourceManager.GetObject("SortByAccess", resourceCulture);

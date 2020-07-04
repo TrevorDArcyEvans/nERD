@@ -162,6 +162,10 @@ namespace NClass.DiagramEditor.ClassDiagram
           CreateTransitionRelationship();
           break;
 
+        case RelationshipType.SourceSink:
+          CreateSourceSinkRelationship();
+          break;
+
         default:
           throw new ArgumentOutOfRangeException($"Unknown RelationshipType: {Type}");
       }
@@ -307,6 +311,18 @@ namespace NClass.DiagramEditor.ClassDiagram
       if (First is StateShape shape1 && Second is StateShape shape2)
       {
         Diagram.AddTransitionRelationship(shape1.State, shape2.State);
+      }
+      else
+      {
+        MessageBox.Show(Strings.ErrorCannotCreateRelationship);
+      }
+    }
+
+    private void CreateSourceSinkRelationship()
+    {
+      if (First is ClassShape shape1 && Second is ClassShape shape2)
+      {
+        Diagram.AddSourceSinkRelationship(shape1.ClassType, shape2.ClassType);
       }
       else
       {

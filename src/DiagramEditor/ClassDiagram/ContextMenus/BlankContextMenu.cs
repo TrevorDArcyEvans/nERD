@@ -1,4 +1,4 @@
-// NClass - Free class diagram editor
+﻿// NClass - Free class diagram editor
 // Copyright (C) 2006-2007 Balazs Tihanyi
 // 
 // This program is free software; you can redistribute it and/or modify it under 
@@ -45,6 +45,7 @@ namespace NClass.DiagramEditor.ClassDiagram.ContextMenus
     private readonly ToolStripMenuItem mnuNewCommentRelationship;
     private readonly ToolStripMenuItem mnuNewEntityRelationship;
     private readonly ToolStripMenuItem mnuNewTransitionRelationship;
+    private readonly ToolStripMenuItem mnuNewSourceSinkRelationship;
 
     private readonly ToolStripMenuItem mnuMembersFormat;
     private readonly ToolStripMenuItem mnuShowType;
@@ -78,6 +79,7 @@ namespace NClass.DiagramEditor.ClassDiagram.ContextMenus
       mnuNewCommentRelationship = new ToolStripMenuItem(Strings.MenuCommentRelationship, Resources.CommentRel, mnuNewCommentRelationship_Click);
       mnuNewEntityRelationship = new ToolStripMenuItem(Strings.MenuEntityRelationship, Resources.EntityRelationship, mnuNewEntityRelationship_Click);
       mnuNewTransitionRelationship = new ToolStripMenuItem(Strings.MenuTransitionRelationship, Resources.Transition, mnuNewTransitionRelationship_Click);
+      mnuNewSourceSinkRelationship = new ToolStripMenuItem("Strings.MenuSourceSinkRelationship", Resources.SinkSsource, mnuNewSourceSinkRelationship_Click); // TODO
 
       mnuMembersFormat = new ToolStripMenuItem(Strings.MenuMembersFormat, null);
       mnuShowType = new ToolStripMenuItem(Strings.MenuType, null);
@@ -115,7 +117,8 @@ namespace NClass.DiagramEditor.ClassDiagram.ContextMenus
         mnuNewNesting,
         mnuNewCommentRelationship,
         mnuNewEntityRelationship,
-        mnuNewTransitionRelationship
+        mnuNewTransitionRelationship,
+        mnuNewSourceSinkRelationship
       });
       mnuMembersFormat.DropDownItems.AddRange(new ToolStripItem[] {
         mnuShowType,
@@ -146,8 +149,8 @@ namespace NClass.DiagramEditor.ClassDiagram.ContextMenus
       mnuNewDelegate.Visible = diagram.Language.SupportsDelegates;
       mnuNewEnum.Visible = diagram.Language.SupportsEnums;
       mnuNewState.Visible = diagram.Language.SupportsStates;
+      mnuNewTransitionRelationship.Visible = diagram.Language.SupportsStates;
 
-      var isERDdiagram = diagram.Language is EntityRelationshipDiagram.ErdLanguage;
       mnuNewAssociation.Visible =
       mnuNewComposition.Visible =
       mnuNewAggregation.Visible =
@@ -155,8 +158,9 @@ namespace NClass.DiagramEditor.ClassDiagram.ContextMenus
       mnuNewRealization.Visible =
       mnuNewDependency.Visible =
       mnuNewNesting.Visible =
-      mnuNewTransitionRelationship.Visible = !isERDdiagram;
-      mnuNewEntityRelationship.Visible = isERDdiagram;
+      mnuNewSourceSinkRelationship.Visible = diagram.Language is CSharp.CSharpLanguage;
+
+      mnuNewEntityRelationship.Visible = diagram.Language is EntityRelationshipDiagram.ErdLanguage;
 
       mnuShowType.Checked = Settings.Default.ShowType;
       mnuShowParameters.Checked = Settings.Default.ShowParameters;
@@ -249,6 +253,11 @@ namespace NClass.DiagramEditor.ClassDiagram.ContextMenus
     private void mnuNewTransitionRelationship_Click(object sender, EventArgs e)
     {
       Diagram?.CreateConnection(RelationshipType.Transition);
+    }
+
+    private void mnuNewSourceSinkRelationship_Click(object sender, EventArgs e)
+    {
+      Diagram?.CreateConnection(RelationshipType.SourceSink);
     }
 
     private void mnuShowType_CheckedChanged(object sender, EventArgs e)

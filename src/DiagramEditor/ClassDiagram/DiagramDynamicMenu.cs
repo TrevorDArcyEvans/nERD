@@ -1,4 +1,4 @@
-// NClass - Free class diagram editor
+﻿// NClass - Free class diagram editor
 // Copyright (C) 2006-2009 Balazs Tihanyi
 // 
 // This program is free software; you can redistribute it and/or modify it under 
@@ -67,7 +67,7 @@ namespace NClass.DiagramEditor.ClassDiagram
         mnuNewStructure.Visible = toolNewStructure.Visible = _diagram.Language.SupportsStructures;
         mnuNewDelegate.Visible = toolNewDelegate.Visible = _diagram.Language.SupportsDelegates;
         mnuNewEnum.Visible = toolNewEnum.Visible = _diagram.Language.SupportsEnums;
-        mnuNewState.Visible = toolNewState.Visible =
+        mnuNewState.Visible = toolNewState.Visible = _diagram.Language.SupportsStates;
         mnuNewTransitionRelationship.Visible = toolNewTransitionRelationship.Visible = _diagram.Language.SupportsStates;
 
         mnuNewAssociation.Visible = toolNewAssociation.Visible =
@@ -76,7 +76,9 @@ namespace NClass.DiagramEditor.ClassDiagram
         mnuNewGeneralization.Visible = toolNewGeneralization.Visible =
         mnuNewRealization.Visible = toolNewRealization.Visible =
         mnuNewDependency.Visible = toolNewDependency.Visible =
-        mnuNewNesting.Visible = toolNewNesting.Visible = _diagram.Language is CSharp.CSharpLanguage;
+        mnuNewNesting.Visible = toolNewNesting.Visible =
+        mnuNewSourceSinkRelationship.Visible = toolNewSourceSinkRelationship.Visible = _diagram.Language is CSharp.CSharpLanguage;
+
         mnuNewEntityRelationship.Visible = toolNewEntityRelationship.Visible = _diagram.Language is EntityRelationshipDiagram.ErdLanguage;
 
         toolDelete.Enabled = _diagram.HasSelectedElement;
@@ -110,6 +112,7 @@ namespace NClass.DiagramEditor.ClassDiagram
       mnuNewCommentRelationship.Text = Strings.MenuCommentRelationship;
       mnuNewEntityRelationship.Text = Strings.MenuEntityRelationship;
       mnuNewTransitionRelationship.Text = Strings.MenuTransitionRelationship;
+      mnuNewSourceSinkRelationship.Text = "Strings.MenuSourceSinkRelationship"; // TODO
       mnuMembersFormat.Text = Strings.MenuMembersFormat;
       mnuShowType.Text = Strings.MenuType;
       mnuShowParameters.Text = Strings.MenuParameters;
@@ -157,6 +160,7 @@ namespace NClass.DiagramEditor.ClassDiagram
       toolNewCommentRelationship.Text = Strings.AddNewCommentRelationship;
       toolNewEntityRelationship.Text = Strings.AddNewEntityRelationship;
       toolNewTransitionRelationship.Text = Strings.AddNewTransitionRelationship;
+      toolNewSourceSinkRelationship.Text = "Strings.AddNewSinkSourceRelationship";  // TODO
       toolDelete.Text = Strings.DeleteSelectedItems;
       #endregion
     }
@@ -253,6 +257,11 @@ namespace NClass.DiagramEditor.ClassDiagram
     private void mnuNewTransitionRelationship_Click(object sender, EventArgs e)
     {
       _diagram.CreateConnection(RelationshipType.Transition);
+    }
+
+    private void mnuNewSourceSinkRelationship_Click(object sender, EventArgs e)
+    {
+      _diagram.CreateConnection(RelationshipType.SourceSink);
     }
 
     private void mnuMembersFormat_DropDownOpening(object sender, EventArgs e)

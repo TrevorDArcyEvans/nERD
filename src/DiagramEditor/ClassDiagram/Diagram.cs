@@ -1,4 +1,4 @@
-// NClass - Free class diagram editor
+﻿// NClass - Free class diagram editor
 // Copyright (C) 2006-2009 Balazs Tihanyi
 // 
 // This program is free software; you can redistribute it and/or modify it under 
@@ -1908,6 +1908,15 @@ namespace NClass.DiagramEditor.ClassDiagram
       Shape startShape = GetShape(trans.First);
       Shape endShape = GetShape(trans.Second);
       AddConnection(new TransitionConnection(trans, startShape, endShape));
+    }
+
+    protected override void AddSourceSinkRelationship(SourceSinkRelationship trans)
+    {
+      base.AddSourceSinkRelationship(trans);
+
+      Shape startShape = GetShape(trans.First);
+      Shape endShape = GetShape(trans.Second);
+      AddConnection(new SourceSinkConnection(trans, startShape, endShape));
     }
 
     protected override void OnEntityRemoved(EntityEventArgs e)

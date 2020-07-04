@@ -574,6 +574,36 @@ namespace NClass.Core
     }
     #endregion
 
+    #region SourceSinkRelationship
+    public SourceSinkRelationship AddSourceSinkRelationship(ClassType first, ClassType second)
+    {
+      var dependency = new SourceSinkRelationship(first, second);
+
+      AddSourceSinkRelationship(dependency);
+      return dependency;
+    }
+
+    protected virtual void AddSourceSinkRelationship(SourceSinkRelationship sourceSink)
+    {
+      AddRelationship(sourceSink);
+    }
+
+    public bool InsertSourceSinkRelationship(SourceSinkRelationship sourceSink)
+    {
+      if (sourceSink != null && !_relationships.Contains(sourceSink) &&
+        _entities.Contains(sourceSink.First) && _entities.Contains(sourceSink.Second))
+      {
+        AddSourceSinkRelationship(sourceSink);
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+
+    #endregion
+
     #region Nesting
     /// <exception cref="RelationshipException">
     /// Cannot create relationship between the two types.
@@ -871,6 +901,10 @@ namespace NClass.Core
 
             case "Transition":
               relationship = AddTransitionRelationship(first as State, second as State);
+              break;
+
+            case "SourceSink":
+              relationship = AddSourceSinkRelationship(first as ClassType, second as ClassType);
               break;
 
             default:

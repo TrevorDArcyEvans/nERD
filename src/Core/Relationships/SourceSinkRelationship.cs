@@ -1,5 +1,6 @@
 ﻿// NClass - Free class diagram editor
 // Copyright (C) 2006-2009 Balazs Tihanyi
+// Copyright (C) 2016-2020 Trevor D'Arcy-Evans
 // 
 // This program is free software; you can redistribute it and/or modify it under 
 // the terms of the GNU General Public License as published by the Free Software 
@@ -13,16 +14,27 @@
 // this program; if not, write to the Free Software Foundation, Inc., 
 // 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-using System;
-
 namespace NClass.Core
 {
-  public abstract class TypeRelationship : Relationship
+  public sealed class SourceSinkRelationship : TypeRelationship
   {
-    protected TypeRelationship(TypeBase first, TypeBase second)
+    public SourceSinkRelationship(ClassType first, ClassType second) :
+      base(first, second)
     {
-      First = first ?? throw new ArgumentNullException("first");
-      Second = second ?? throw new ArgumentNullException("second");
+      RelationshipType = RelationshipType.SourceSink;
+      SupportsLabel = true;
+    }
+
+    public SourceSinkRelationship Clone(ClassType first, ClassType second)
+    {
+      var trans = new SourceSinkRelationship(first, second);
+      trans.CopyFrom(this);
+      return trans;
+    }
+
+    public override string ToString()
+    {
+      return $"[{First.Name}]--({Label})-->[{Second.Name}]";
     }
   }
 }

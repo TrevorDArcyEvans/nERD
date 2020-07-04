@@ -1212,4 +1212,7 @@ Do you still want to continue?</value>
   <data name="MenuStdDiagram" xml:space="preserve">
     <value>State Transition Diagram</value>
   </data>
+  <data name="SourceSinkRelationship" xml:space="preserve">
+    <value>Source-Sink Relationship</value>
+  </data>
 </root>

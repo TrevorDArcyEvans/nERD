@@ -36,16 +36,31 @@ namespace NClass.DiagramEditor.ClassDiagram.Connections
         new Point(OpenArrowWidth / 2, OpenArrowHeight)
       };
 
+      OpenLeavingArrowPoints = new Point[] {
+        new Point(-OpenArrowWidth / 2, 0),
+        new Point(0, OpenArrowHeight),
+        new Point(OpenArrowWidth / 2, 0)
+      };
+
       ClosedArrowPath.AddLines(new Point[] {
         new Point(0, 0),
         new Point(ClosedArrowWidth / 2, ClosedArrowHeight),
         new Point(-ClosedArrowWidth / 2, ClosedArrowHeight)
       });
       ClosedArrowPath.CloseFigure();
+
+      ClosedLeavingArrowPath.AddLines(new Point[] {
+        new Point(0, ClosedArrowHeight),
+        new Point(ClosedArrowWidth / 2, 0),
+        new Point(-ClosedArrowWidth / 2, 0)
+      });
+      ClosedLeavingArrowPath.CloseFigure();
     }
 
     public static GraphicsPath ClosedArrowPath { get; } = new GraphicsPath();
+    public static GraphicsPath ClosedLeavingArrowPath { get; } = new GraphicsPath();
 
-    public static Point[] OpenArrowPoints { get; private set; }
+    public static Point[] OpenArrowPoints { get; }
+    public static Point[] OpenLeavingArrowPoints { get; }
   }
 }
