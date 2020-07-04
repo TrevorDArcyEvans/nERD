@@ -44,6 +44,11 @@ namespace NClass.DiagramEditor.ClassDiagram.Connections
 
     public override Relationship Relationship => SourceSink;
 
+    protected override bool IsDashed
+    {
+      get { return true; }
+    }
+
     protected override void OnDoubleClick(AbsoluteMouseEventArgs e)
     {
       base.OnDoubleClick(e);
