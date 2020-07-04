@@ -44,10 +44,7 @@ namespace NClass.DiagramEditor.ClassDiagram.Connections
 
     public override Relationship Relationship => SourceSink;
 
-    protected override bool IsDashed
-    {
-      get { return true; }
-    }
+    protected override bool IsDashed => true;
 
     protected override void OnDoubleClick(AbsoluteMouseEventArgs e)
     {
@@ -98,9 +95,9 @@ namespace NClass.DiagramEditor.ClassDiagram.Connections
       HideEditor();
     }
 
-    protected override Size StartCapSize { get { return Arrowhead.ClosedArrowSize; } }
+    protected override Size StartCapSize => Arrowhead.ClosedArrowSize;
 
-    protected override Size EndCapSize { get { return Arrowhead.ClosedArrowSize; } }
+    protected override Size EndCapSize => Arrowhead.ClosedArrowSize;
 
     protected override void DrawStartCap(IGraphics g, bool onScreen, Style style)
     {
