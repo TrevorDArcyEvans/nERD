@@ -79,7 +79,7 @@ namespace NClass.DiagramEditor.ClassDiagram.ContextMenus
       mnuNewCommentRelationship = new ToolStripMenuItem(Strings.MenuCommentRelationship, Resources.CommentRel, mnuNewCommentRelationship_Click);
       mnuNewEntityRelationship = new ToolStripMenuItem(Strings.MenuEntityRelationship, Resources.EntityRelationship, mnuNewEntityRelationship_Click);
       mnuNewTransitionRelationship = new ToolStripMenuItem(Strings.MenuTransitionRelationship, Resources.Transition, mnuNewTransitionRelationship_Click);
-      mnuNewSourceSinkRelationship = new ToolStripMenuItem("Strings.MenuSourceSinkRelationship", Resources.SinkSsource, mnuNewSourceSinkRelationship_Click); // TODO
+      mnuNewSourceSinkRelationship = new ToolStripMenuItem(Strings.MenuSourceSinkRelationship, Resources.SinkSsource, mnuNewSourceSinkRelationship_Click);
 
       mnuMembersFormat = new ToolStripMenuItem(Strings.MenuMembersFormat, null);
       mnuShowType = new ToolStripMenuItem(Strings.MenuType, null);

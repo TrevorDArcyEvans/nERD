@@ -112,7 +112,7 @@ namespace NClass.DiagramEditor.ClassDiagram
       mnuNewCommentRelationship.Text = Strings.MenuCommentRelationship;
       mnuNewEntityRelationship.Text = Strings.MenuEntityRelationship;
       mnuNewTransitionRelationship.Text = Strings.MenuTransitionRelationship;
-      mnuNewSourceSinkRelationship.Text = "Strings.MenuSourceSinkRelationship"; // TODO
+      mnuNewSourceSinkRelationship.Text = Strings.MenuSourceSinkRelationship;
       mnuMembersFormat.Text = Strings.MenuMembersFormat;
       mnuShowType.Text = Strings.MenuType;
       mnuShowParameters.Text = Strings.MenuParameters;
@@ -160,7 +160,7 @@ namespace NClass.DiagramEditor.ClassDiagram
       toolNewCommentRelationship.Text = Strings.AddNewCommentRelationship;
       toolNewEntityRelationship.Text = Strings.AddNewEntityRelationship;
       toolNewTransitionRelationship.Text = Strings.AddNewTransitionRelationship;
-      toolNewSourceSinkRelationship.Text = "Strings.AddNewSinkSourceRelationship";  // TODO
+      toolNewSourceSinkRelationship.Text = Strings.AddNewSourceSinkRelationship;
       toolDelete.Text = Strings.DeleteSelectedItems;
       #endregion
     }

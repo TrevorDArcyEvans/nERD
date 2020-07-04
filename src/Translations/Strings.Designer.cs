@@ -214,6 +214,15 @@ namespace NClass.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add New Source-Sink Relationship.
+        /// </summary>
+        public static string AddNewSourceSinkRelationship {
+            get {
+                return ResourceManager.GetString("AddNewSourceSinkRelationship", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add New State.
         /// </summary>
         public static string AddNewState {
@@ -2337,6 +2346,15 @@ namespace NClass.Translations {
         public static string MenuSize {
             get {
                 return ResourceManager.GetString("MenuSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Source-Sink Relationship.
+        /// </summary>
+        public static string MenuSourceSinkRelationship {
+            get {
+                return ResourceManager.GetString("MenuSourceSinkRelationship", resourceCulture);
             }
         }
         

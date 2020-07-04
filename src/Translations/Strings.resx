@@ -1215,4 +1215,10 @@ Do you still want to continue?</value>
   <data name="SourceSinkRelationship" xml:space="preserve">
     <value>Source-Sink Relationship</value>
   </data>
+  <data name="MenuSourceSinkRelationship" xml:space="preserve">
+    <value>&amp;Source-Sink Relationship</value>
+  </data>
+  <data name="AddNewSourceSinkRelationship" xml:space="preserve">
+    <value>Add New Source-Sink Relationship</value>
+  </data>
 </root>
