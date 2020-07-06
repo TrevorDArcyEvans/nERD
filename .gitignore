@@ -263,3 +263,6 @@ __pycache__/
 
 .vscode
 /.project
+
+# Doxygen output
+/src/Documentation
