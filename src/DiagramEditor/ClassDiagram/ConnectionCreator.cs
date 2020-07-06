@@ -320,9 +320,9 @@ namespace NClass.DiagramEditor.ClassDiagram
 
     private void CreateSourceSinkRelationship()
     {
-      if (First is ClassShape shape1 && Second is ClassShape shape2)
+      if (First is CompositeTypeShape shape1 && Second is CompositeTypeShape shape2)
       {
-        Diagram.AddSourceSinkRelationship(shape1.ClassType, shape2.ClassType);
+        Diagram.AddSourceSinkRelationship(shape1.CompositeType, shape2.CompositeType);
       }
       else
       {

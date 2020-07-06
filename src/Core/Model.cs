@@ -575,7 +575,7 @@ namespace NClass.Core
     #endregion
 
     #region SourceSinkRelationship
-    public SourceSinkRelationship AddSourceSinkRelationship(ClassType first, ClassType second)
+    public SourceSinkRelationship AddSourceSinkRelationship(CompositeType first, CompositeType second)
     {
       var dependency = new SourceSinkRelationship(first, second);
 
@@ -904,7 +904,7 @@ namespace NClass.Core
               break;
 
             case "SourceSink":
-              relationship = AddSourceSinkRelationship(first as ClassType, second as ClassType);
+              relationship = AddSourceSinkRelationship(first as CompositeType, second as CompositeType);
               break;
 
             default:

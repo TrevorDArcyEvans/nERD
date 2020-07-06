@@ -18,14 +18,14 @@ namespace NClass.Core
 {
   public sealed class SourceSinkRelationship : TypeRelationship
   {
-    public SourceSinkRelationship(ClassType first, ClassType second) :
+    public SourceSinkRelationship(CompositeType first, CompositeType second) :
       base(first, second)
     {
       RelationshipType = RelationshipType.SourceSink;
       SupportsLabel = true;
     }
 
-    public SourceSinkRelationship Clone(ClassType first, ClassType second)
+    public SourceSinkRelationship Clone(CompositeType first, CompositeType second)
     {
       var trans = new SourceSinkRelationship(first, second);
       trans.CopyFrom(this);
