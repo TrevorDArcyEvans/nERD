@@ -1,4 +1,4 @@
-// NClass - Free class diagram editor
+﻿// NClass - Free class diagram editor
 // Copyright (C) 2006-2009 Balazs Tihanyi
 // 
 // This program is free software; you can redistribute it and/or modify it under 
@@ -468,10 +468,8 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
         IsSelected = true;
         return true;
       }
-      else
-      {
-        return false;
-      }
+
+      return false;
     }
 
     protected internal sealed override void Offset(Size offset)
@@ -544,10 +542,8 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
         shape.IsSelected = true;
         return shape;
       }
-      else
-      {
-        return null;
-      }
+
+      return null;
     }
 
     protected abstract bool CloneEntity(Diagram diagram);

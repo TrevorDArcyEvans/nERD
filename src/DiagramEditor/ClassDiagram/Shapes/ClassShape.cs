@@ -1,4 +1,4 @@
-// NClass - Free class diagram editor
+﻿// NClass - Free class diagram editor
 // Copyright (C) 2006-2009 Balazs Tihanyi
 // 
 // This program is free software; you can redistribute it and/or modify it under 
@@ -95,9 +95,11 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
     protected override Font GetNameFont(Style style)
     {
       if (ClassType.Modifier == ClassModifier.Abstract)
+      {
         return style.AbstractNameFont;
-      else
-        return base.GetNameFont(style);
+      }
+
+      return base.GetNameFont(style);
     }
 
     protected override int GetRoundingSize(Style style)
