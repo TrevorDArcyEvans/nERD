@@ -30,6 +30,7 @@ namespace NClass.DiagramEditor.ClassDiagram.Shapes
     public event ResizeEventHandler Resizing;
     public event ResizeEventHandler Resize;
 
+    [Flags]
     protected enum ResizeMode
     {
       None = 0,
