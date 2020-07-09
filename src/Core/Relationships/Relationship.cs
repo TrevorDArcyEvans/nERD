@@ -1,4 +1,4 @@
-// NClass - Free class diagram editor
+﻿// NClass - Free class diagram editor
 // Copyright (C) 2006-2009 Balazs Tihanyi
 // 
 // This program is free software; you can redistribute it and/or modify it under 
@@ -39,7 +39,9 @@ namespace NClass.Core
       set
       {
         if (value == "")
+        {
           value = null;
+        }
 
         if (_label != value && SupportsLabel)
         {
@@ -83,7 +85,7 @@ namespace NClass.Core
     {
       if (SupportsLabel && Label != null)
       {
-        XmlElement labelNode = node.OwnerDocument.CreateElement("Label");
+        var labelNode = node.OwnerDocument.CreateElement("Label");
         labelNode.InnerText = Label.ToString();
         node.AppendChild(labelNode);
       }
@@ -94,7 +96,7 @@ namespace NClass.Core
     {
       if (SupportsLabel)
       {
-        XmlElement labelNode = node["Label"];
+        var labelNode = node["Label"];
         if (labelNode != null)
         {
           Label = labelNode.InnerText;
