@@ -57,3 +57,6 @@ To compile the project, you will need Visual Studio 2019.
 
 ## Known Issues
 * model explorer does not render completely on Linux
+
+## Similar Projects
+* [UML Diagram Editor](https://github.com/Dirkster99/Edi/wiki/UML-Diagram-Editor)
